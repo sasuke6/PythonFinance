@@ -1,0 +1,663 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0029)http://tushare.org/macro.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" data-livestyle-extension="available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>TuShare -财经数据接口包</title>
+    <meta content="免费股票数据,开源股票数据接口,股票数据,股票数据接口,python股票数据,财经数据,金融数据" name="keywords">
+    <meta name="description" content="TuShare为金融数据分析提供便捷、快速的接口，与pandas无缝对接">
+	<meta content="index,follow" name="robots">
+	<meta content="TuShare" name="Jimmy Liu">
+    <meta name="application-name" content="tushare">
+	<script src="http://hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828"></script><script src="./TuShare -macroData_files/wb.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="./TuShare -macroData_files/nature.css" type="text/css">
+    <link rel="stylesheet" href="./TuShare -macroData_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./TuShare -macroData_files/jquery.js"></script>
+    <script type="text/javascript" src="./TuShare -macroData_files/underscore.js"></script>
+    <script type="text/javascript" src="./TuShare -macroData_files/doctools.js"></script>
+    <link rel="top" title="TuShare 0.4.3 documentation" href="http://tushare.org/index.html">
+    <link rel="next" title="新闻事件数据" href="http://tushare.org/newsevent.html">
+    <link rel="prev" title="基本面数据" href="http://tushare.org/fundamental.html"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script charset="UTF-8" src="./TuShare -macroData_files/bundle.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script charset="UTF-8" src="./TuShare -macroData_files/iframeWidget.js"></script></head>
+  <body><iframe id="sina_anywhere_iframe" style="display: none;" src="./TuShare -macroData_files/saved_resource.html"></iframe>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -macroData_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="document">
+            <div class="sphinxsidebar">
+                <h3>Table Of Contents</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="http://tushare.org/index.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id2">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id3">使用对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id4">使用前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id5">下载安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id6">版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id7">版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id8">友情链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/trading.html">交易数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id2">历史行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id3">复权数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id4">实时行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id5">历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id6">实时分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id7">当日历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id8">大盘指数行情列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id9">大单交易数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/reference.html">投资参考数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id2">分配预案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id3">业绩预告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id4">限售股解禁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id5">基金持股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id6">新股数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id7">融资融券（沪市）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id8">融资融券（深市）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/classifying.html">股票分类数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id2">行业分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id3">概念分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id4">地域分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id5">中小板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id6">创业板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id7">风险警示板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id8">沪深300成份及权重</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id9">上证50成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id10">中证500成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id11">终止上市股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id12">暂停上市股票列表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/fundamental.html">基本面数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id2">股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id3">业绩报告（主表）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id4">盈利能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id5">营运能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id6">成长能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id7">偿债能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id8">现金流量</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/macro.html">宏观经济数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id2">存款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id3">贷款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id4">存款准备金率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id5">货币供应量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id6">货币供应量(年底余额)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id7">国内生产总值(年度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id8">国内生产总值(季度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#gdp">三大需求对GDP贡献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id9">三大产业对GDP拉动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id10">三大产业贡献率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id11">居民消费价格指数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id12">工业品出厂价格指数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/newsevent.html">新闻事件数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id2">即时新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id3">信息地雷</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id4">新浪股吧</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/billboard.html">龙虎榜数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id2">每日龙虎榜列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id3">个股上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id4">营业部上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id5">机构席位追踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id6">机构成交明细</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/shibor.html">银行间同业拆放利率</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#shibor">Shibor拆放利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id2">银行报价数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id3">Shibor均值数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#lpr">贷款基础利率（LPR）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id4">LPR均值数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/storing.html">数据存储</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#csv">CSV文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#excel">Excel文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#hdf5">HDF5文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#json">JSON文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mysql">MySQL数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mongodb">MongoDB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/datayes.html">通联数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id2">用户注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#token">获取token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id3">调用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id4">证券概况</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id5">行情数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id6">基本面数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id7">股票信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id8">港股信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id9">基金信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id10">期货信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id11">期权信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id12">期权隐含波动率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id13">债券信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id14">指数信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id15">宏观行业</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id16">特色大数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/boxoffice.html">电影票房</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id2">实时票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id3">每日票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id4">月度票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id5">影院日度票房</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/donate.html">关于捐助</a></li>
+</ul>
+
+                
+
+                <p>
+
+
+            </p></div>
+             
+            <div class="documentwrapper">
+                <div class="bodywrapper">
+                    <div class="body">
+                        
+  <div class="section" id="id1">
+<h1>宏观经济数据<a class="headerlink" href="http://tushare.org/macro.html#id1" title="Permalink to this headline">¶</a></h1>
+<p><em>宏观经济数据</em>提供国内重要的宏观经济数据，目前只提供比较常用的宏观经济数据，通过简单的接口调用可获取相应的DataFrame格式数据，大项主要包括以下类别：</p>
+<ul class="simple">
+<li>金融信息数据</li>
+<li>国民经济数据</li>
+<li>价格指数数据</li>
+<li>景气指数数据</li>
+<li>对外经济贸易数据</li>
+</ul>
+<p>【注：以下所有数据的结果打印只显示了前10行记录】</p>
+<div class="section" id="id2">
+<h2>存款利率<a class="headerlink" href="http://tushare.org/macro.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_deposit_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>date :变动日期</li>
+<li>deposit_type :存款种类</li>
+<li>rate:利率（%）</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>       date            deposit_type             rate
+0    2014-11-22            定活两便(定期)         --
+1    2014-11-22            定期存款整存整取(半年)   2.55
+2    2014-11-22            定期存款整存整取(二年)   3.35
+3    2014-11-22           定期存款整存整取(三个月)   2.35
+4    2014-11-22            定期存款整存整取(三年)   4.00
+5    2014-11-22            定期存款整存整取(五年)   4.75
+6    2014-11-22            定期存款整存整取(一年)   2.75
+7    2014-11-22               活期存款(不定期)   0.35
+8    2014-11-22  零存整取、整存零取、存本取息定期存款(三年)   2.80
+9    2014-11-22  零存整取、整存零取、存本取息定期存款(五年)   3.00
+10   2014-11-22  零存整取、整存零取、存本取息定期存款(一年)   2.60
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>贷款利率<a class="headerlink" href="http://tushare.org/macro.html#id3" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_loan_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>date :执行日期</li>
+<li>loan_type :存款种类</li>
+<li>rate:利率（%）</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>       date            loan_type            rate
+0    2014-11-22          短期贷款(六个月以内)   5.60
+1    2014-11-22         短期贷款(六个月至一年)   5.60
+2    2014-11-22          中长期贷款(三至五年)   6.00
+3    2014-11-22          中长期贷款(五年以上)   6.15
+4    2014-11-22          中长期贷款(一至三年)   6.00
+5    2014-11-22               贴现(贴现)     --
+6    2014-11-22         优惠贷款(扶贫贴息贷款)     --
+7    2014-11-22     优惠贷款(老少边穷发展经济贷款)     --
+8    2014-11-22     优惠贷款(民政部门福利工厂贷款)     --
+9    2014-11-22     优惠贷款(民族贸易及民族用品生产贷款)     --
+10   2014-11-22     优惠贷款(贫困县办工业贷款)     --
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>存款准备金率<a class="headerlink" href="http://tushare.org/macro.html#id4" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_rrr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>date :变动日期</li>
+<li>before :调整前存款准备金率(%)</li>
+<li>now:调整后存款准备金率(%)</li>
+<li>changed:调整幅度(%)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>      date      before  now     changed
+0   2012-05-18  20.50  20.00   -0.50
+1   2012-02-24  21.00  20.50   -0.50
+2   2011-12-05  21.50  21.00   -0.50
+3   2011-06-20  21.00  21.50    0.50
+4   2011-05-18  20.50  21.00    0.50
+5   2011-04-21  20.00  20.50    0.50
+6   2011-03-25  19.50  20.00    0.50
+7   2011-02-24  19.00  19.50    0.50
+8   2011-01-20  18.50  19.00    0.50
+9   2010-12-20  18.00  18.50    0.50
+10  2010-11-29  17.50  18.00    0.50
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>货币供应量<a class="headerlink" href="http://tushare.org/macro.html#id5" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_money_supply</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>month :统计时间</li>
+<li>m2 :货币和准货币（广义货币M2）(亿元)</li>
+<li>m2_yoy:货币和准货币（广义货币M2）同比增长(%)</li>
+<li>m1:货币(狭义货币M1)(亿元)</li>
+<li>m1_yoy:货币(狭义货币M1)同比增长(%)</li>
+<li>m0:流通中现金(M0)(亿元)</li>
+<li>m0_yoy:流通中现金(M0)同比增长(%)</li>
+<li>cd:活期存款(亿元)</li>
+<li>cd_yoy:活期存款同比增长(%)</li>
+<li>qm:准货币(亿元)</li>
+<li>qm_yoy:准货币同比增长(%)</li>
+<li>ftd:定期存款(亿元)</li>
+<li>ftd_yoy:定期存款同比增长(%)</li>
+<li>sd:储蓄存款(亿元)</li>
+<li>sd_yoy:储蓄存款同比增长(%)</li>
+<li>rests:其他存款(亿元)</li>
+<li>rests_yoy:其他存款同比增长(%)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        month         m2 m2_yoy         m1   m1_yoy   m0      m0_yoy         cd  \
+0    2014.12  1228374.81  12.20  348056.41   3.20  60259.53   2.90  287796.88
+1    2014.11  1208605.95  12.30  335114.13   3.20  58438.53   3.50  276675.60
+2    2014.10  1199236.31  12.60  329617.73   3.20  57691.64   3.80  271926.09
+3     2014.9  1202051.41  12.90  327220.21   4.80  58844.99   4.20  268375.22
+4     2014.8  1197499.08  12.80  332023.23   5.70  57997.61   5.60  274025.62
+5     2014.7  1194249.24  13.50  331347.32   6.70  57346.50   5.40  274000.81
+6     2014.6  1209587.20  14.70  341487.45   8.90  56951.05   5.30  284536.39
+7     2014.5  1182300.32  13.40  327835.25   5.70  58051.11   6.70  269788.46
+8     2014.4  1168812.67  13.20  324482.52   5.50  58615.54   5.40  265866.98
+9     2014.3  1160687.38  12.10  327683.74   5.40  58329.30   5.20  269354.44
+10    2014.2  1131760.83  13.30  316625.11   6.90  62320.95   3.30  254304.16
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>货币供应量(年底余额)<a class="headerlink" href="http://tushare.org/macro.html#id6" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_money_supply_bal</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>year :统计年度</li>
+<li>m2 :货币和准货币(亿元)</li>
+<li>m1:货币(亿元)</li>
+<li>m0:流通中现金(亿元)</li>
+<li>cd:活期存款(亿元)</li>
+<li>qm:准货币(亿元)</li>
+<li>ftd:定期存款(亿元)</li>
+<li>sd:储蓄存款(亿元)</li>
+<li>rests:其他存款(亿元)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    year          m2         m1        m0         cd         qm        ftd  \
+0   2013  1106525.00  337291.10  58574.40  278716.60  769233.90  232696.60
+1   2012   974159.50  308673.00  54659.80  254013.20  665486.50  195946.30
+2   2011   851590.90  289847.70  50748.50  239099.20  561743.20  166616.00
+3   2010   725774.10  266621.30  44628.20  221993.20  459152.70  105858.70
+4   2009   606225.00  220001.50  38246.00  181758.50  386219.10   82284.90
+5   2008   475166.60  166217.10  34219.00  131998.20  308949.50   60103.10
+6   2007   403442.20  152560.10  30375.20  122184.90  250882.10   46932.50
+7   2005   298755.70  107278.80  24031.70   83247.10  191476.90   33100.00
+8   2004   254107.00   95969.70  21468.30   74501.40  158137.20   25382.20
+9   2003   221222.80   84118.60  19746.00   64372.60  137104.30   20940.40
+10  2002   185007.00   70881.80  17278.00   53603.80  114125.20   16433.80
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>国内生产总值(年度)<a class="headerlink" href="http://tushare.org/macro.html#id7" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_gdp_year</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>year :统计年度</li>
+<li>gdp :国内生产总值(亿元)</li>
+<li>pc_gdp :人均国内生产总值(元)</li>
+<li>gnp :国民生产总值(亿元)</li>
+<li>pi :第一产业(亿元)</li>
+<li>si :第二产业(亿元)</li>
+<li>industry :工业(亿元)</li>
+<li>cons_industry :建筑业(亿元)</li>
+<li>ti :第三产业(亿元)</li>
+<li>trans_industry :交通运输仓储邮电通信业(亿元)</li>
+<li>lbdy :批发零售贸易及餐饮业(亿元)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    year        gdp    pc_gdp        gnp        pi         si   industry  \
+0   2014  636463.00       NaN        NaN  58332.00  271392.00        NaN
+1   2013  588019.00  41907.59        NaN  55322.00  256810.00  210689.42
+2   2012  519470.10  38459.47        NaN  52373.63  235161.99  199670.66
+3   2011  473104.05  35197.79        NaN  47486.21  220412.81  188470.15
+4   2010  401202.00  29992.00  403260.00  40533.60  187581.42  160867.01
+5   2009  340902.80  25608.00  341401.50  35226.00  157638.80  135239.90
+6   2008  314045.40  23708.00  315274.70  33702.00  149003.40  130260.20
+7   2007  265810.30  20169.00  266411.00  28627.00  125831.40  110534.90
+8   2006  216314.43  16499.70  215904.41  24040.00  103719.54   91310.94
+9   2005  184937.37  14185.36  183617.37  22420.00   87598.09   77230.78
+10  2004  159878.34  12335.58  159453.60  21412.73   73904.31   65210.03
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>国内生产总值(季度)<a class="headerlink" href="http://tushare.org/macro.html#id8" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_gdp_quarter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>quarter :季度</li>
+<li>gdp :国内生产总值(亿元)</li>
+<li>gdp_yoy :国内生产总值同比增长(%)</li>
+<li>pi :第一产业增加值(亿元)</li>
+<li>pi_yoy:第一产业增加值同比增长(%)</li>
+<li>si :第二产业增加值(亿元)</li>
+<li>si_yoy :第二产业增加值同比增长(%)</li>
+<li>ti :第三产业增加值(亿元)</li>
+<li>ti_yoy :第三产业增加值同比增长(%)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>     quarter        gdp  gdp_yoy        pi  pi_yoy         si  si_yoy  \
+0    2014.4  636463.00     7.40  58332.00    4.10  271392.00    7.30
+1    2014.3  419908.00     7.40  37996.00    4.20  185787.00    7.40
+2    2014.2  269044.09     7.42  19812.00    3.90  123871.33    7.41
+3    2014.1  128212.71     7.36   7775.68    3.50   57587.49    7.34
+4    2013.4  568845.21     7.67  56957.00    4.00  249684.42    7.85
+5    2013.3  387100.24     7.68  35669.00    3.40  175117.83    7.85
+6    2013.2  248024.45     7.59  18622.00    3.00  116955.37    7.62
+7    2013.1  118862.08     7.74   7427.00    3.40   54528.34    7.75
+8    2012.4  519470.10     7.65  52373.63    4.55  235161.99    7.92
+9    2012.3  353741.55     7.56  33085.87    4.25  165316.31    7.90
+10   2012.2  228003.09     7.68  17469.87    4.35  110785.17    8.16
+</pre></div>
+</div>
+</div>
+<div class="section" id="gdp">
+<h2>三大需求对GDP贡献<a class="headerlink" href="http://tushare.org/macro.html#gdp" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_gdp_for</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>year :统计年度</li>
+<li>end_for :最终消费支出贡献率(%)</li>
+<li>for_rate :最终消费支出拉动(百分点)</li>
+<li>asset_for :资本形成总额贡献率(%)</li>
+<li>asset_rate:资本形成总额拉动(百分点)</li>
+<li>goods_for :货物和服务净出口贡献率(%)</li>
+<li>goods_rate :货物和服务净出口拉动(百分点)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    year  end_for  for_rate  asset_for  asset_rate  goods_for  goods_rate
+0   2013     50.0       3.9       54.4         4.2       -4.4        -0.3
+1   2012     55.1       4.2       47.0         3.6       -2.1        -0.1
+2   2011     56.5       5.3       47.7         4.4       -4.2        -0.4
+3   2010     43.1       4.5       52.9         5.5        4.0         0.4
+4   2009     49.8       4.6       87.6         8.1      -37.4        -3.5
+5   2008     44.2       4.2       47.0         4.5        8.8         0.9
+6   2007     39.6       5.6       42.4         6.0       18.0         2.6
+7   2006     40.4       5.1       43.6         5.5       16.0         2.1
+8   2005     38.7       4.4       38.5         4.3       22.8         2.6
+9   2004     39.5       4.0       54.5         5.5        6.0         0.6
+10  2003     35.8       3.6       63.2         6.3        1.0         0.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>三大产业对GDP拉动<a class="headerlink" href="http://tushare.org/macro.html#id9" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_gdp_pull</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>year :统计年度</li>
+<li>gdp_yoy :国内生产总值同比增长(%)</li>
+<li>pi :第一产业拉动率(%)</li>
+<li>si :第二产业拉动率(%)</li>
+<li>industry:其中工业拉动(%)</li>
+<li>ti :第三产业拉动率(%)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    year  gdp_yoy   pi   si  industry   ti
+0   2013      7.7  0.4  3.7       3.1  3.6
+1   2012      7.7  0.4  3.7       3.1  3.5
+2   2011      9.3  0.4  4.8       4.2  4.1
+3   2010     10.4  0.4  5.9       5.1  4.1
+4   2009      9.2  0.4  4.8       3.7  4.0
+5   2008      9.6  0.6  4.7       4.2  4.3
+6   2007     14.2  0.4  7.2       6.2  6.6
+7   2006     12.7  0.6  6.3       5.4  5.7
+8   2005     11.3  0.6  5.8       4.9  4.9
+9   2004     10.1  0.8  5.3       4.8  4.0
+10  2003     10.0  0.3  5.9       5.2  3.8
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>三大产业贡献率<a class="headerlink" href="http://tushare.org/macro.html#id10" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_gdp_contrib</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>year :统计年度</li>
+<li>gdp_yoy :国内生产总值</li>
+<li>pi :第一产业献率(%)</li>
+<li>si :第二产业献率(%)</li>
+<li>industry:其中工业献率(%)</li>
+<li>ti :第三产业献率(%)</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    year  gdp_yoy     pi     si  industry     ti
+0   2013      100   4.88  48.28     39.86  46.84
+1   2012      100   5.72  48.71     40.59  45.56
+2   2011      100   4.61  51.61     44.67  43.77
+3   2010      100   3.85  56.84     48.54  39.32
+4   2009      100   4.48  51.94     40.01  43.58
+5   2008      100   5.73  49.25     43.40  45.02
+6   2007      100   2.99  50.70     44.03  46.31
+7   2006      100   4.80  50.00     42.40  45.20
+8   2005      100   5.60  51.10     43.40  43.30
+9   2004      100   7.90  52.20     47.70  39.90
+10  2003      100   3.40  58.50     51.90  38.10
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>居民消费价格指数<a class="headerlink" href="http://tushare.org/macro.html#id11" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_cpi</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>month :统计月份</li>
+<li>cpi :价格指数</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>      month     cpi
+0    2014.12  101.51
+1    2014.11  101.44
+2    2014.10  101.60
+3     2014.9  101.63
+4     2014.8  101.99
+5     2014.7  102.29
+6     2014.6  102.34
+7     2014.5  102.48
+8     2014.4  101.80
+9     2014.3  102.38
+10    2014.2  101.95
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>工业品出厂价格指数<a class="headerlink" href="http://tushare.org/macro.html#id12" title="Permalink to this headline">¶</a></h2>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">get_ppi</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>返回值说明：</p>
+<ul class="simple">
+<li>month :统计月份</li>
+<li>ppiip :工业品出厂价格指数</li>
+<li>ppi :生产资料价格指数</li>
+<li>qm:采掘工业价格指数</li>
+<li>rmi:原材料工业价格指数</li>
+<li>pi:加工工业价格指数</li>
+<li>cg:生活资料价格指数</li>
+<li>food:食品类价格指数</li>
+<li>clothing:衣着类价格指数</li>
+<li>roeu:一般日用品价格指数</li>
+<li>dcg:耐用消费品价格指数</li>
+</ul>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>     month   ppiip    ppi      qm     rmi     pi      cg    food  clothing  \
+0    2014.12   96.68  95.71   86.80   93.64  97.49   99.84   99.71    100.57
+1    2014.11   97.31  96.51   89.35   95.31  97.75   99.87   99.85    100.50
+2    2014.10   97.76  97.05   91.13   96.32  97.95  100.04  100.17    100.51
+3     2014.9   98.20  97.61   93.32   97.28  98.17  100.11  100.35    100.65
+4     2014.8   98.80  98.35   95.56   98.52  98.55  100.24  100.62    100.67
+5     2014.6   98.89  98.47   96.00   98.54  98.69  100.23  100.69    100.79
+6     2014.5     NaN  98.05     NaN   97.96  98.38  100.17  100.41    100.82
+7     2014.4   98.00  97.39   93.94   96.94  97.93   99.94  100.08    100.73
+8     2014.3   97.70  97.05   93.34   96.19  97.79   99.79   99.78    100.83
+9     2014.2   97.98  97.46   94.67   96.78  98.03   99.67   99.70    100.77
+10    2014.1   98.36  97.95   95.95   97.52  98.34   99.65     NaN    100.72
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -macroData_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Jimmy Liu.
+	waditu.<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256440418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256440418%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1256440418"></span><script src="http://s11.cnzz.com/z_stat.php?id=1256440418&amp;show=pic" type="text/javascript"></script>
+    </div>
+  
+</body><div></div></html>

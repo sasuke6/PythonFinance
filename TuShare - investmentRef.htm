@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://tushare.org/reference.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" data-livestyle-extension="available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>TuShare -财经数据接口包</title>
+    <meta content="免费股票数据,开源股票数据接口,股票数据,股票数据接口,python股票数据,财经数据,金融数据" name="keywords">
+    <meta name="description" content="TuShare为金融数据分析提供便捷、快速的接口，与pandas无缝对接">
+	<meta content="index,follow" name="robots">
+	<meta content="TuShare" name="Jimmy Liu">
+    <meta name="application-name" content="tushare">
+	<script src="http://hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828"></script><script src="./TuShare - investmentRef_files/wb.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="./TuShare - investmentRef_files/nature.css" type="text/css">
+    <link rel="stylesheet" href="./TuShare - investmentRef_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./TuShare - investmentRef_files/jquery.js"></script>
+    <script type="text/javascript" src="./TuShare - investmentRef_files/underscore.js"></script>
+    <script type="text/javascript" src="./TuShare - investmentRef_files/doctools.js"></script>
+    <link rel="top" title="TuShare 0.4.3 documentation" href="http://tushare.org/index.html">
+    <link rel="next" title="股票分类数据" href="http://tushare.org/classifying.html">
+    <link rel="prev" title="交易数据" href="http://tushare.org/trading.html"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script charset="UTF-8" src="./TuShare - investmentRef_files/bundle.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script charset="UTF-8" src="./TuShare - investmentRef_files/iframeWidget.js"></script></head>
+  <body><iframe id="sina_anywhere_iframe" style="display: none;" src="./TuShare - investmentRef_files/saved_resource.html"></iframe>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare - investmentRef_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="document">
+            <div class="sphinxsidebar">
+                <h3>Table Of Contents</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="http://tushare.org/index.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id2">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id3">使用对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id4">使用前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id5">下载安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id6">版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id7">版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id8">友情链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/trading.html">交易数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id2">历史行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id3">复权数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id4">实时行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id5">历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id6">实时分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id7">当日历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id8">大盘指数行情列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id9">大单交易数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/reference.html">投资参考数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id2">分配预案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id3">业绩预告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id4">限售股解禁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id5">基金持股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id6">新股数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id7">融资融券（沪市）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id8">融资融券（深市）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/classifying.html">股票分类数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id2">行业分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id3">概念分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id4">地域分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id5">中小板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id6">创业板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id7">风险警示板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id8">沪深300成份及权重</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id9">上证50成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id10">中证500成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id11">终止上市股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id12">暂停上市股票列表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/fundamental.html">基本面数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id2">股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id3">业绩报告（主表）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id4">盈利能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id5">营运能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id6">成长能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id7">偿债能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id8">现金流量</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/macro.html">宏观经济数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id2">存款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id3">贷款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id4">存款准备金率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id5">货币供应量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id6">货币供应量(年底余额)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id7">国内生产总值(年度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id8">国内生产总值(季度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#gdp">三大需求对GDP贡献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id9">三大产业对GDP拉动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id10">三大产业贡献率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id11">居民消费价格指数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id12">工业品出厂价格指数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/newsevent.html">新闻事件数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id2">即时新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id3">信息地雷</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id4">新浪股吧</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/billboard.html">龙虎榜数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id2">每日龙虎榜列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id3">个股上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id4">营业部上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id5">机构席位追踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id6">机构成交明细</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/shibor.html">银行间同业拆放利率</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#shibor">Shibor拆放利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id2">银行报价数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id3">Shibor均值数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#lpr">贷款基础利率（LPR）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id4">LPR均值数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/storing.html">数据存储</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#csv">CSV文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#excel">Excel文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#hdf5">HDF5文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#json">JSON文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mysql">MySQL数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mongodb">MongoDB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/datayes.html">通联数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id2">用户注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#token">获取token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id3">调用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id4">证券概况</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id5">行情数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id6">基本面数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id7">股票信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id8">港股信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id9">基金信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id10">期货信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id11">期权信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id12">期权隐含波动率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id13">债券信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id14">指数信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id15">宏观行业</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id16">特色大数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/boxoffice.html">电影票房</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id2">实时票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id3">每日票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id4">月度票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id5">影院日度票房</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/donate.html">关于捐助</a></li>
+</ul>
+                
+
+                <p>
+
+
+            </p></div>
+             
+            <div class="documentwrapper">
+                <div class="bodywrapper">
+                    <div class="body">
+                        
+  <div class="section" id="id1">
+<h1>投资参考数据<a class="headerlink" href="http://tushare.org/reference.html#id1" title="Permalink to this headline">¶</a></h1>
+<p><em>投资参考</em>提供一些可能会影响股票价格走势的信息数据，为投资者在做投资决策时提供数据参考，亦可作为量化策略模型的事件因子纳入模型的计算。TuShare提供的参考数据主要包括以下：</p>
+<ul class="simple">
+<li>分配预案</li>
+<li>业绩预告</li>
+<li>限售股解禁</li>
+<li>基金持股</li>
+<li>新股上市</li>
+<li>融资融券（沪市）</li>
+<li>融资融券（深市）</li>
+</ul>
+<div class="section" id="id2">
+<h2>分配预案<a class="headerlink" href="http://tushare.org/reference.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>每到季报、年报公布的时段，就经常会有上市公司利润分配预案发布，而一些高送转高分红的股票往往会成为市场炒作的热点。及时获取和统计高送转预案的股票是参与热点炒作的关键，TuShare提供了简洁的接口，能返回股票的送转和分红预案情况。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong> : 预案公布的年份，默认为2014</li>
+<li><strong>top</strong> :取最新n条数据，默认取最近公布的25条</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>:股票代码</li>
+<li><strong>name</strong>:股票名称</li>
+<li><strong>year</strong>:分配年份</li>
+<li><strong>report_date</strong>:公布日期</li>
+<li><strong>divi</strong>:分红金额（每10股）</li>
+<li><strong>shares</strong>:转增和送股数（每10股）</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">profit_data</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'shares'</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    code    name    year    report_date  divi  shares
+59  002555  顺荣三七  2014  2015-03-31   1.0      17
+32  002269  美邦服饰  2014  2015-04-01   1.0      15
+24  600353  旭光股份  2014  2015-04-02   0.7      10
+27  002610  爱康科技  2014  2015-04-01   0.0      10
+51  300287   飞利信  2014  2015-03-31   0.7      10
+29  300168  万达信息  2014  2015-04-01   1.0      10
+25  002681  奋达科技  2014  2015-04-01   1.5       8
+31  300098   高新兴  2014  2015-04-01   0.5       6
+44  300354  东华测试  2014  2015-03-31   0.3       6
+8   300108  双龙股份  2014  2015-04-02   0.0       5
+10  002396  星网锐捷  2014  2015-04-02   1.0       5
+7   002686   亿利达  2014  2015-04-02   0.8       5
+40  600735   新华锦  2014  2015-04-01   0.0       5
+</pre></div>
+</div>
+<p>选择每10股送转在10以上的：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">shares</span><span class="o">&gt;=</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>业绩预告<a class="headerlink" href="http://tushare.org/reference.html#id3" title="Permalink to this headline">¶</a></h2>
+<p>按年度、季度获取业绩预告数据，接口提供从1998年以后每年的业绩预告数据，需指定年度、季度两个参数。数据在获取的过程中，会打印进度信息(下同)。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:int 年度 e.g:2014</li>
+<li><strong>quarter</strong>:int 季度 :1、2、3、4，只能输入这4个季度</li>
+</ul>
+<p>结果返回的数据属性说明如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>code,代码
+name,名称
+type,业绩变动类型【预增、预亏等】
+report_date,发布日期
+pre_eps,上年同期每股收益
+range,业绩变动范围
+</pre></div>
+</div>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取2014年中报的业绩预告数据</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">forecast_data</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果返回：</p>
+<div class="highlight-python"><div class="highlight"><pre>      code      name     type report_date  pre_eps             range
+0     000710   天兴仪表   预亏  2014-08-27  -0.0178                --
+1     600710   常林股份   减亏  2014-08-23    -0.12                --
+2     002071   长城影视   预升  2014-08-21   0.0032              6.72
+3     000555   神州信息   预升  2014-08-21  -0.0494              36.7
+4     600007   中国国贸   预升  2014-08-20     0.23             23.21
+5     002125   湘潭电化   预亏  2014-08-19  -0.1721                --
+6     300153   科泰电源   预升  2014-08-18     0.07             20.02
+7     601668   中国建筑   --   2014-08-15     0.29               30%
+8     600754   锦江股份   预升  2014-08-15   0.2786             10.83
+9     002491   通鼎互联   预升  2014-08-14   0.3817              2.22
+10    601177   杭齿前进   预升  2014-08-12   0.0373             37.43
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>限售股解禁<a class="headerlink" href="http://tushare.org/reference.html#id4" title="Permalink to this headline">¶</a></h2>
+<p>以月的形式返回限售股解禁情况，通过了解解禁股本的大小，判断股票上行的压力。可通过设定年份和月份参数获取不同时段的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份,默认为当前年</li>
+<li><strong>month</strong>:解禁月份，默认为当前月</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>：股票代码</li>
+<li><strong>name</strong>：股票名称</li>
+<li><strong>date</strong>:解禁日期</li>
+<li><strong>count</strong>:解禁数量（万股）</li>
+<li><strong>ratio</strong>:占总盘比率</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">xsg_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    code     name        date       count   ratio
+0   000100  TCL集团  2015-04-30    79277.10   6.50
+1   000859   国风塑业  2015-04-30    14832.75  26.08
+2   002526   山东矿机  2015-04-30    15797.95  29.58
+3   300026   红日药业  2015-04-30       55.50   0.09
+4   300272   开能环保  2015-04-30       14.62   0.06
+5   002137    实益达  2015-04-29       65.70   0.14
+6   600172   黄河旋风  2015-04-28      777.62   1.12
+7   000955   欣龙控股  2015-04-27     3900.00   7.24
+8   603000    人民网  2015-04-27    32980.00  59.66
+9   002521   齐峰新材  2015-04-26      244.20   0.58
+10  300195   长荣股份  2015-04-26       66.60   0.39
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>基金持股<a class="headerlink" href="http://tushare.org/reference.html#id5" title="Permalink to this headline">¶</a></h2>
+<p>获取每个季度基金持有上市公司股票的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份,默认为当前年</li>
+<li><strong>quarter</strong>:季度（只能输入1，2，3，4这个四个数字）</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>：股票代码</li>
+<li><strong>name</strong>：股票名称</li>
+<li><strong>date</strong>:报告日期</li>
+<li><strong>nums</strong>:基金家数</li>
+<li><strong>nlast</strong>:与上期相比（增加或减少了）</li>
+<li><strong>count</strong>:基金持股数（万股）</li>
+<li><strong>clast</strong>:与上期相比</li>
+<li><strong>amount</strong>:基金持股市值</li>
+<li><strong>ratio</strong>:占流通盘比率</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">fund_holdings</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        code   name        date     nums nlast      count      clast      amount  \
+0     603993   洛阳钼业  2014-12-31  108   106    4546.12    4486.11    39778.53
+1     603806    福斯特  2014-12-31    3    -5      12.10     -33.07      461.95
+2     603766   隆鑫通用  2014-12-31   65    50    2469.13   -1529.92    33185.16
+3     603606   东方电缆  2014-12-31   16     0     113.22      81.83     2493.21
+4     603456   九洲药业  2014-12-31   18     8    1508.28    1441.44    49230.23
+5     603366   日出东方  2014-12-31   68    66    1771.41    1509.48    28750.06
+6     603328   依顿电子  2014-12-31   43    42      91.78      51.01     2137.60
+7     603308   应流股份  2014-12-31   10     8     288.30     288.10     5166.26
+8     603306   华懋科技  2014-12-31    1    -9       3.41     -47.75       86.38
+9     603288   海天味业  2014-12-31  135   128    2746.63    2285.18   109727.72
+10    603169   兰石重装  2014-12-31    1   -12       0.10      -9.80        1.76
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>新股数据<a class="headerlink" href="http://tushare.org/reference.html#id6" title="Permalink to this headline">¶</a></h2>
+<p>获取IPO发行和上市的时间列表，包括发行数量、网上发行数量、发行价格已经中签率信息等。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>：股票代码</li>
+<li><strong>name</strong>：股票名称</li>
+<li><strong>ipo_date</strong>:上网发行日期</li>
+<li><strong>issue_date</strong>:上市日期</li>
+<li><strong>amount</strong>:发行数量(万股)</li>
+<li><strong>markets</strong>:上网发行数量(万股)</li>
+<li><strong>price</strong>:发行价格(元)</li>
+<li><strong>pe</strong>:发行市盈率</li>
+<li><strong>limit</strong>:个人申购上限(万股)</li>
+<li><strong>funds</strong>：募集资金(亿元)</li>
+<li><strong>ballot</strong>:网上中签率(%)</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">new_stocks</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>      code   name    ipo_date     issue_date  amount  markets  price     pe  limit  \
+0    300442   普丽盛 2015-04-16        NaT    2500     1000   0.00   0.00   0.00
+1    300434  金石东方 2015-04-16        NaT    1700      680   0.00   0.00   0.00
+2    300438  鹏辉能源 2015-04-16        NaT    2100      840   0.00   0.00   0.00
+3    002751  易尚展示 2015-04-16        NaT    1756      696   0.00   0.00   0.00
+4    300404  博济医药 2015-04-16        NaT    1667      657   0.00   0.00   0.00
+5    603021  山东华鹏 2015-04-15        NaT    2640     1040   0.00   0.00   0.00
+6    300441  鲍斯股份 2015-04-15        NaT    2112      845   0.00   0.00   0.00
+7    603315  福鞍股份 2015-04-15        NaT    2500     1000   0.00   0.00   0.00
+8    600959  江苏有线 2015-04-15        NaT   59700    17700   0.00   0.00   0.00
+9    300448  浩云科技 2015-04-15        NaT    2000      800   0.00   0.00   0.00
+10   300440  运达科技 2015-04-15        NaT    2800     1120   0.00   0.00   0.00
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>融资融券（沪市）<a class="headerlink" href="http://tushare.org/reference.html#id7" title="Permalink to this headline">¶</a></h2>
+<p>沪市的融资融券数据从上海证券交易所网站直接获取，提供了有记录以来的全部汇总和明细数据。根据上交所网站提示：数据根据券商申报的数据汇总，由券商保证数据的真实、完整、准确。</p>
+<ul class="simple">
+<li>本日融资融券余额＝本日融资余额＋本日融券余量金额</li>
+<li>本日融资余额＝前日融资余额＋本日融资买入额－本日融资偿还额；</li>
+<li>本日融资偿还额＝本日直接还款额＋本日卖券还款额＋本日融资强制平仓额＋本日融资正权益调整－本日融资负权益调整；</li>
+<li>本日融券余量=前日融券余量+本日融券卖出数量-本日融券偿还量；</li>
+<li>本日融券偿还量＝本日买券还券量＋本日直接还券量＋本日融券强制平仓量＋本日融券正权益调整－本日融券负权益调整－本日余券应划转量；</li>
+<li>融券单位：股（标的证券为股票）/份（标的证券为基金）/手（标的证券为债券）。</li>
+<li>明细信息中仅包含当前融资融券标的证券的相关数据，汇总信息中包含被调出标的证券范围的证券的余额余量相关数据。</li>
+</ul>
+<p><strong>沪市融资融券汇总数据</strong></p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>start</strong>:开始日期 format：YYYY-MM-DD 为空时取去年今日</li>
+<li><strong>end</strong>:结束日期 format：YYYY-MM-DD 为空时取当前日期</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>opDate</strong>:信用交易日期</li>
+<li><strong>rzye</strong>:本日融资余额(元)</li>
+<li><strong>rzmre</strong>: 本日融资买入额(元)</li>
+<li><strong>rqyl</strong>: 本日融券余量</li>
+<li><strong>rqylje</strong>: 本日融券余量金额(元)</li>
+<li><strong>rqmcl</strong>: 本日融券卖出量</li>
+<li><strong>rzrqjyzl</strong>:本日融资融券余额(元)</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">sh_margins</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s">'2015-01-01'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">'2015-04-19'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    opDate           rzye         rzmre       rqyl      rqylje  \
+0   2015-04-17  1149157713135  129211438621  819750253  6041055352
+1   2015-04-16  1157182044282  112006268973  820992013  5973347250
+2   2015-04-15  1146127306376  127637503244  815236850  5760511452
+3   2015-04-14  1132444514795  135681414792  808065982  5734278801
+4   2015-04-13  1112644681454  125462079457  837423227  6012263982
+5   2015-04-10  1093646777627  120171575492  851628036  6013790547
+6   2015-04-09  1080032082669  151266260607  950252465  7459280657
+7   2015-04-08  1063907515309  146795417745  883306430  6090844298
+8   2015-04-07  1049019510305  135205459177  890246879  6052607373
+9   2015-04-03  1028339497560  121745692024  833666811  5639393066
+
+     rqmcl       rzrqjyzl
+0   1380227173  1155198768487
+1   2203963301  1163155391532
+2   2243634120  1151887817828
+3   2105259947  1138178793596
+4   1717712021  1118656945436
+5   1903813388  1099660568174
+6   1839296323  1087491363326
+7   1811107279  1069998359607
+8   1812376621  1055072117678
+9   1685019881  1033978890626
+</pre></div>
+</div>
+<p><strong>沪市融资融券明细数据</strong></p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期 format：YYYY-MM-DD
+默认为空’‘,数据返回最近交易日明细数据</li>
+<li><strong>symbol</strong>：标的代码，6位数字e.g.600848，默认为空’‘</li>
+<li><strong>start</strong>:开始日期 format：YYYY-MM-DD 默认为空’‘</li>
+<li><strong>end</strong>:结束日期 format：YYYY-MM-DD 默认为空’‘</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>opDate</strong>:信用交易日期</li>
+<li><strong>stockCode</strong>:标的证券代码</li>
+<li><strong>securityAbbr</strong>:标的证券简称</li>
+<li><strong>rzye</strong>:本日融资余额(元)</li>
+<li><strong>rzmre</strong>: 本日融资买入额(元)</li>
+<li><strong>rzche</strong>:本日融资偿还额(元)</li>
+<li><strong>rqyl</strong>: 本日融券余量</li>
+<li><strong>rqmcl</strong>: 本日融券卖出量</li>
+<li><strong>rqchl</strong>: 本日融券偿还量</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">sh_margin_details</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s">'2015-01-01'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">'2015-04-19'</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s">'601989'</span><span class="p">)</span>
+<span class="c">#如果不设symbol参数或者开始和结束日期时段设置过长，数据获取可能会比较慢，建议分段分步获取，比如一年为一个周期</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    opDate      stockCode       securityAbbr   rzye       rzmre       rzche  \
+0   2015-04-17    601989         中国重工  14252656894  2312839368  2601765162
+1   2015-04-16    601989         中国重工  14554040816  2548138684  2829229670
+2   2015-04-15    601989         中国重工  14835131802  2107531845  1748705388
+3   2015-04-14    601989         中国重工  14476305345  3032554867  2310655239
+4   2015-04-13    601989         中国重工  13789855569  1479008826  1205637113
+5   2015-04-10    601989         中国重工  13516483857  1168986102  1196101729
+6   2015-04-09    601989         中国重工  13543599484  1474071547  1503903339
+7   2015-04-08    601989         中国重工  13599709125  1567850413  1489255328
+8   2015-04-07    601989         中国重工  13514051054  1709141749  1614928278
+9   2015-04-03    601989         中国重工  13411176185  2033773020  1634094504
+
+    rqyl      rqmcl      rqchl
+0   2070747   18772355   18677978
+1   1976370  107495699  106518076
+2    998747   71400666   71855619
+3   1453700  107761665  107808218
+4   1482253   45963069   46086007
+5   1605191   60792818   61117727
+6   1930100   38205439   37598326
+7   1237814   50049257   50097957
+8   1286514   73136275   73024138
+9   1174377  103765174  103718451
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>融资融券（深市）<a class="headerlink" href="http://tushare.org/reference.html#id8" title="Permalink to this headline">¶</a></h2>
+<p>深市的融资融券数据从深圳证券交易所网站直接获取，提供了有记录以来的全部汇总和明细数据。在深交所的网站上，对于融资融券的说明如下：</p>
+<p>说明：</p>
+<p>本报表基于证券公司报送的融资融券余额数据汇总生成，其中：</p>
+<div class="highlight-python"><div class="highlight"><pre>本日融资余额(元)=前日融资余额＋本日融资买入-本日融资偿还额
+本日融券余量(股)=前日融券余量＋本日融券卖出量-本日融券买入量-本日现券偿还量
+本日融券余额(元)=本日融券余量×本日收盘价
+本日融资融券余额(元)=本日融资余额＋本日融券余额；
+</pre></div>
+</div>
+<p>2014年9月22日起，“融资融券交易总量”数据包含调出标的证券名单的证券的融资融券余额。</p>
+<p><strong>深市融资融券汇总数据</strong></p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>start</strong>:开始日期 format：YYYY-MM-DD 为空时取去年今日</li>
+<li><strong>end</strong>:结束日期 format：YYYY-MM-DD 为空时取当前日期</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>opDate</strong>:信用交易日期(index)</li>
+<li><strong>rzmre</strong>: 融资买入额(元)</li>
+<li><strong>rzye</strong>:融资余额(元)</li>
+<li><strong>rqmcl</strong>: 融券卖出量</li>
+<li><strong>rqyl</strong>: 融券余量</li>
+<li><strong>rqye</strong>: 融券余量(元)</li>
+<li><strong>rzrqye</strong>:融资融券余额(元)</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">sz_margins</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s">'2015-01-01'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">'2015-04-19'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>            rzmre          rzye      rqmcl       rqyl        rqye  \
+opDate
+2015-01-05  38277263968  329575457077  290786402  328745900  2217097425
+2015-01-06  37065808766  330337451354  234959735  336234242  2275278509
+2015-01-07  30805638905  333570682580  204113638  342875246  2340163403
+2015-01-08  28316028226  334537113612  209058725  324338597  2248088027
+2015-01-09  29236879032  334096183516  261141219  300986514  2076584482
+2015-01-12  24331316036  336071465357  234181290  286924013  1985929255
+2015-01-13  22634216323  337225655535  246749378  284409172  1968502622
+2015-01-14  23342662784  341201284890  225359998  275175916  1885368528
+2015-01-15  23670699950  343792509454  250484696  286478745  1960122114
+2015-01-16  29221750218  344702543733  231980680  299066189  2021372924
+
+                  rzrqye
+opDate
+2015-01-05  331792554502
+2015-01-06  332612729863
+2015-01-07  335910845983
+2015-01-08  336785201639
+2015-01-09  336172767998
+2015-01-12  338057394612
+2015-01-13  339194158157
+2015-01-14  343086653418
+2015-01-15  345752631568
+2015-01-16  346723916657
+</pre></div>
+</div>
+<p><strong>深市融资融券明细数据</strong></p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期 format：YYYY-MM-DD
+默认为空’‘,数据返回最近交易日明细数据</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>stockCode</strong>:标的证券代码</li>
+<li><strong>securityAbbr</strong>:标的证券简称</li>
+<li><strong>rzmre</strong>: 融资买入额(元)</li>
+<li><strong>rzye</strong>:融资余额(元)</li>
+<li><strong>rqmcl</strong>: 融券卖出量</li>
+<li><strong>rqyl</strong>: 融券余量</li>
+<li><strong>rqye</strong>: 融券余量(元)</li>
+<li><strong>rzrqye</strong>:融资融券余额(元)</li>
+<li><strong>opDate</strong>:信用交易日期</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">sz_margin_details</span><span class="p">(</span><span class="s">'2015-04-20'</span><span class="p">)</span>
+<span class="c">#深市融资融券明细一次只能获取一天的明细数据，如果不输入参数，则为最近一个交易日的明细数据</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>    stockCode securityAbbr       rzmre        rzye     rqmcl     rqyl      rqye  \
+0    000001         平安银行   914150095  5960345469   9598977  1898697  30948760
+1    000002         万 科Ａ  1602572463  7422963456  14532967  2843656  40408351
+2    000006         深振业Ａ   341727587  1566603285    252419    80590    866343
+3    000009         中国宝安   520548152  4076646657    971086   533460   9543599
+4    000012         南 玻Ａ           0   710082271         0   665743   7236626
+5    000024         招商地产           0  2469445374         0   518556  16573050
+6    000027         深圳能源   158004666  1156768901    780641   404882   5729080
+7    000028         国药一致    71928528   499539059     26050    33934   2404223
+8    000031         中粮地产   275150291  1382171682    813989   250644   2894938
+9    000039         中集集团   505792033  2456145597   2514898   644534  17640896
+
+   rzrqye      opDate
+0  5991294229  2015-04-20
+1  7463371807  2015-04-20
+2  1567469628  2015-04-20
+3  4086190256  2015-04-20
+4   717318897  2015-04-20
+5  2486018424  2015-04-20
+6  1162497981  2015-04-20
+7   501943282  2015-04-20
+8  1385066620  2015-04-20
+9  2473786493  2015-04-20
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare - investmentRef_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Jimmy Liu.
+	waditu.<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256440418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256440418%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1256440418"></span><script src="http://s11.cnzz.com/z_stat.php?id=1256440418&amp;show=pic" type="text/javascript"></script>
+    </div>
+  
+</body><div></div></html>

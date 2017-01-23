@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0030)http://tushare.org/shibor.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" data-livestyle-extension="available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>TuShare -财经数据接口包</title>
+    <meta content="免费股票数据,开源股票数据接口,股票数据,股票数据接口,python股票数据,财经数据,金融数据" name="keywords">
+    <meta name="description" content="TuShare为金融数据分析提供便捷、快速的接口，与pandas无缝对接">
+	<meta content="index,follow" name="robots">
+	<meta content="TuShare" name="Jimmy Liu">
+    <meta name="application-name" content="tushare">
+	<script src="http://hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828"></script><script src="./TuShare -bankInterst_files/wb.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="./TuShare -bankInterst_files/nature.css" type="text/css">
+    <link rel="stylesheet" href="./TuShare -bankInterst_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./TuShare -bankInterst_files/jquery.js"></script>
+    <script type="text/javascript" src="./TuShare -bankInterst_files/underscore.js"></script>
+    <script type="text/javascript" src="./TuShare -bankInterst_files/doctools.js"></script>
+    <link rel="top" title="TuShare 0.4.3 documentation" href="http://tushare.org/index.html">
+    <link rel="next" title="数据存储" href="http://tushare.org/storing.html">
+    <link rel="prev" title="龙虎榜数据" href="http://tushare.org/billboard.html"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script charset="UTF-8" src="./TuShare -bankInterst_files/bundle.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script charset="UTF-8" src="./TuShare -bankInterst_files/iframeWidget.js"></script><script charset="UTF-8" id="scriptRequest_script_14851692927282" type="text/javascript" src="http://widget.weibo.com/public/aj_relationship.php?fuid=1304687120&amp;callback=STK_14851692927281"></script><script charset="UTF-8" id="scriptRequest_script_14851692927284" type="text/javascript" src="http://widget.weibo.com/public/aj_relationship.php?fuid=1304687120&amp;callback=STK_14851692927283"></script></head>
+  <body><iframe id="sina_anywhere_iframe" style="display: none;" src="./TuShare -bankInterst_files/saved_resource.html"></iframe>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -bankInterst_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="document">
+            <div class="sphinxsidebar">
+                <h3>Table Of Contents</h3>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="http://tushare.org/index.html">前言</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id2">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id3">使用对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id4">使用前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id5">下载安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id6">版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id7">版本信息</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="http://tushare.org/index.html#id8">友情链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/trading.html">交易数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/reference.html">投资参考数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/classifying.html">股票分类数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/fundamental.html">基本面数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/macro.html">宏观经济数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/newsevent.html">新闻事件数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/billboard.html">龙虎榜数据</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://tushare.org/shibor.html">银行间同业拆放利率</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#shibor">Shibor拆放利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id2">银行报价数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id3">Shibor均值数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#lpr">贷款基础利率（LPR）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id4">LPR均值数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/storing.html">数据存储</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/datayes.html">通联数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/boxoffice.html">电影票房</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/donate.html">关于捐助</a></li>
+</ul>
+
+                
+
+                <p>
+
+
+            </p></div>
+             
+            <div class="documentwrapper">
+                <div class="bodywrapper">
+                    <div class="body">
+                        
+  <div class="section" id="id1">
+<h1>银行间同业拆放利率<a class="headerlink" href="http://tushare.org/shibor.html#id1" title="Permalink to this headline">¶</a></h1>
+<p>Shibor接口是获取上海银行间同业拆放利率（Shanghai Interbank Offered
+Rate，简称Shibor）的便捷接口，以年为参数获取，可以取到公布的Shibor品种包括隔夜、1周、2周、1个月、3个月、6个月、9个月及1年的周期数据。目前主要包括以下类别：</p>
+<ul class="simple">
+<li>Shibor拆放利率</li>
+<li>银行报价数据</li>
+<li>Shibor均值数据</li>
+<li>贷款基础利率（LPR）</li>
+<li>LPR均值数据</li>
+</ul>
+<div class="section" id="shibor">
+<h2>Shibor拆放利率<a class="headerlink" href="http://tushare.org/shibor.html#shibor" title="Permalink to this headline">¶</a></h2>
+<p>获取银行间同业拆放利率数据，目前只提供2006年以来的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份(YYYY),默认为当前年份</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期</li>
+<li><strong>ON</strong>:隔夜拆放利率</li>
+<li><strong>1W</strong>:1周拆放利率</li>
+<li><strong>2W</strong>:2周拆放利率</li>
+<li><strong>1M</strong>:1个月拆放利率</li>
+<li><strong>3M</strong>:3个月拆放利率</li>
+<li><strong>6M</strong>:6个月拆放利率</li>
+<li><strong>9M</strong>:9个月拆放利率</li>
+<li><strong>1Y</strong>:1年拆放利率</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">shibor_data</span><span class="p">()</span> <span class="c">#取当前年份的数据</span>
+<span class="c">#df = ts.shibor_data(2014) #取2014年的数据</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>     date       ON     1W     2W     1M      3M      6M      9M      1Y
+94 2015-05-21  1.033  1.944  2.369  2.457  3.0140  3.5950  3.9000  3.9480
+93 2015-05-20  1.032  1.932  2.380  2.514  3.0710  3.6480  3.9390  4.0240
+92 2015-05-19  1.033  1.925  2.370  2.570  3.1560  3.7000  3.9790  4.1150
+91 2015-05-18  1.052  1.920  2.384  2.664  3.2000  3.7720  4.0220  4.1710
+90 2015-05-15  1.078  1.962  2.400  2.802  3.3230  3.8750  4.0970  4.2410
+89 2015-05-14  1.182  2.056  2.536  2.957  3.4820  3.9620  4.1805  4.3115
+88 2015-05-13  1.247  2.149  2.596  3.042  3.6340  4.0460  4.2553  4.3845
+87 2015-05-12  1.290  2.197  2.635  3.083  3.6810  4.0900  4.2920  4.4150
+86 2015-05-11  1.345  2.245  2.639  3.120  3.7350  4.1250  4.3350  4.4530
+85 2015-05-08  1.443  2.334  2.834  3.211  3.7985  4.1831  4.3960  4.5000
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>银行报价数据<a class="headerlink" href="http://tushare.org/shibor.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>获取银行间报价数据，目前只提供2006年以来的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份(YYYY),默认为当前年份</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期</li>
+<li><strong>bank</strong>:报价银行名称</li>
+<li><strong>ON</strong>:隔夜拆放利率</li>
+<li><strong>ON_B</strong>:隔夜拆放买入价</li>
+<li><strong>ON_A</strong>:隔夜拆放卖出价</li>
+<li><strong>1W_B</strong>:1周买入</li>
+<li><strong>1W_A</strong>:1周卖出</li>
+<li><strong>2W_B</strong>:买入</li>
+<li><strong>2W_A</strong>:卖出</li>
+<li><strong>1M_B</strong>:买入</li>
+<li><strong>1M_A</strong>:卖出</li>
+<li><strong>3M_B</strong>:买入</li>
+<li><strong>3M_A</strong>:卖出</li>
+<li><strong>6M_B</strong>:买入</li>
+<li><strong>6M_A</strong>:卖出</li>
+<li><strong>9M_B</strong>:买入</li>
+<li><strong>9M_A</strong>:卖出</li>
+<li><strong>1Y_B</strong>:买入</li>
+<li><strong>1Y_A</strong>:卖出</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">shibor_quote_data</span><span class="p">()</span> <span class="c">#取当前年份的数据</span>
+<span class="c">#df = ts.shibor_quote_data(2014) #取2014年的数据</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>       date     bank    ON_B  ON_A   1W_B  1W_A  2W_B  2W_A  1M_B  1M_A  3M_B  \
+1707 2015-05-21   国开行  1.01  1.01  1.93  1.93  2.34  2.34  2.30  2.30  2.80
+1698 2015-05-21  兴业银行  1.01  1.01  1.93  1.93  2.40  2.40  2.50  2.50  2.90
+1690 2015-05-21  工商银行  1.01  1.01  1.90  1.90  2.35  2.35  2.40  2.40  3.00
+1691 2015-05-21  农业银行  1.06  1.06  1.98  1.98  2.39  2.39  2.45  2.45  3.02
+1692 2015-05-21  中国银行  1.01  1.01  1.93  1.93  2.34  2.34  2.40  2.40  2.85
+1693 2015-05-21  建设银行  1.00  1.00  1.90  1.90  2.34  2.34  2.38  2.38  2.86
+1694 2015-05-21  交通银行  1.05  1.05  1.97  1.97  2.41  2.41  2.46  2.46  3.00
+1696 2015-05-21  中信银行  1.03  1.03  1.95  1.95  2.37  2.37  2.50  2.50  2.95
+1697 2015-05-21  光大银行  1.05  1.05  2.00  2.00  2.40  2.40  2.50  2.50  2.90
+1695 2015-05-21  招商银行  1.04  1.04  1.99  1.99  2.38  2.38  2.50  2.50  3.05
+
+      3M_A  6M_B  6M_A  9M_B  9M_A  1Y_B  1Y_A
+1707  2.80  3.15  3.15  3.30  3.30  3.40  3.40
+1698  2.90  3.15  3.15  3.25  3.25  3.45  3.45
+1690  3.00  3.60  3.60  3.90  3.90  4.00  4.00
+1691  3.02  3.60  3.60  3.90  3.90  4.00  4.00
+1692  2.85  3.05  3.05  3.50  3.50  3.60  3.60
+1693  2.86  3.23  3.23  3.35  3.35  3.45  3.45
+1694  3.00  3.60  3.60  3.90  3.90  3.95  3.95
+1696  2.95  3.50  3.50  3.85  3.85  3.98  3.98
+1697  2.90  3.65  3.65  3.94  3.94  3.30  3.30
+1695  3.05  3.60  3.60  3.90  3.90  4.00  4.00
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Shibor均值数据<a class="headerlink" href="http://tushare.org/shibor.html#id3" title="Permalink to this headline">¶</a></h2>
+<p>获取Shibor均值数据，目前只提供2006年以来的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份(YYYY),默认为当前年份</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期</li>
+<li>其它分别为各周期5、10、20均价，请参考上面的周期含义</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">shibor_ma_data</span><span class="p">()</span> <span class="c">#取当前年份的数据</span>
+<span class="c">#df = ts.shibor_ma_data(2014) #取2014年的数据</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>     date       ON_5   ON_10   ON_20    1W_5   1W_10   1W_20    2W_5   2W_10
+94 2015-05-21  1.0456  1.1735  1.4342  1.9366  2.0664  2.2460  2.3806  2.5143
+93 2015-05-20  1.0754  1.2191  1.4800  1.9590  2.1075  2.2771  2.4140  2.5684
+92 2015-05-19  1.1184  1.2682  1.5285  2.0024  2.1512  2.3115  2.4572  2.6244
+91 2015-05-18  1.1698  1.3213  1.5812  2.0568  2.1955  2.3519  2.5102  2.6821
+90 2015-05-15  1.2284  1.3780  1.6420  2.1218  2.2425  2.3995  2.5612  2.7442
+89 2015-05-14  1.3014  1.4392  1.7030  2.1962  2.2893  2.4456  2.6480  2.8111
+88 2015-05-13  1.3628  1.4949  1.7592  2.2560  2.3276  2.4868  2.7228  2.8653
+87 2015-05-12  1.4180  1.5461  1.8155  2.3000  2.3565  2.5254  2.7916  2.9141
+86 2015-05-11  1.4728  1.5977  1.8712  2.3342  2.3819  2.5630  2.8540  2.9605
+85 2015-05-08  1.5276  1.6483  1.9284  2.3632  2.4062  2.5992  2.9272  3.0065
+</pre></div>
+</div>
+</div>
+<div class="section" id="lpr">
+<h2>贷款基础利率（LPR）<a class="headerlink" href="http://tushare.org/shibor.html#lpr" title="Permalink to this headline">¶</a></h2>
+<p>获取贷款基础利率（LPR）数据，目前只提供2013年以来的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份(YYYY),默认为当前年份</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期</li>
+<li><strong>1Y</strong>:1年贷款基础利率</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">lpr_data</span><span class="p">()</span> <span class="c">#取当前年份的数据</span>
+<span class="c">#df = ts.lpr_data(2014) #取2014年的数据</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>         date    1Y
+94 2015-05-21  5.05
+93 2015-05-20  5.05
+92 2015-05-19  5.05
+91 2015-05-18  5.05
+90 2015-05-15  5.05
+89 2015-05-14  5.05
+88 2015-05-13  5.05
+87 2015-05-12  5.05
+86 2015-05-11  5.05
+85 2015-05-08  5.30
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>LPR均值数据<a class="headerlink" href="http://tushare.org/shibor.html#id4" title="Permalink to this headline">¶</a></h2>
+<p>获取贷款基础利率均值数据，目前只提供2013年以来的数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>year</strong>:年份(YYYY),默认为当前年份</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>date</strong>:日期</li>
+<li><strong>1Y_5</strong>:5日均值</li>
+<li><strong>1Y_10</strong>:10日均值</li>
+<li><strong>1Y_20</strong>:20日均值</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">lpr_ma_data</span><span class="p">()</span> <span class="c">#取当前年份的数据</span>
+<span class="c">#df = ts.lpr_ma_data(2014) #取2014年的数据</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        date   1Y_5  1Y_10  1Y_20
+94 2015-05-21  5.05   5.08   5.19
+93 2015-05-20  5.05   5.10   5.20
+92 2015-05-19  5.05   5.13   5.21
+91 2015-05-18  5.05   5.15   5.23
+90 2015-05-15  5.05   5.18   5.24
+89 2015-05-14  5.10   5.20   5.25
+88 2015-05-13  5.15   5.23   5.26
+87 2015-05-12  5.20   5.25   5.28
+86 2015-05-11  5.25   5.28   5.29
+85 2015-05-08  5.30   5.30   5.30
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -bankInterst_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Jimmy Liu.
+	waditu.<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256440418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256440418%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1256440418"></span><script src="http://s11.cnzz.com/z_stat.php?id=1256440418&amp;show=pic" type="text/javascript"></script>
+    </div>
+  
+</body><div></div></html>

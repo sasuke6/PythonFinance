@@ -1,0 +1,463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://tushare.org/billboard.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" data-livestyle-extension="available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>TuShare -财经数据接口包</title>
+    <meta content="免费股票数据,开源股票数据接口,股票数据,股票数据接口,python股票数据,财经数据,金融数据" name="keywords">
+    <meta name="description" content="TuShare为金融数据分析提供便捷、快速的接口，与pandas无缝对接">
+	<meta content="index,follow" name="robots">
+	<meta content="TuShare" name="Jimmy Liu">
+    <meta name="application-name" content="tushare">
+	<script src="http://hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828"></script><script src="./TuShare -DownData_files/wb.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="./TuShare -DownData_files/nature.css" type="text/css">
+    <link rel="stylesheet" href="./TuShare -DownData_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./TuShare -DownData_files/jquery.js"></script>
+    <script type="text/javascript" src="./TuShare -DownData_files/underscore.js"></script>
+    <script type="text/javascript" src="./TuShare -DownData_files/doctools.js"></script>
+    <link rel="top" title="TuShare 0.4.3 documentation" href="http://tushare.org/index.html">
+    <link rel="next" title="银行间同业拆放利率" href="http://tushare.org/shibor.html">
+    <link rel="prev" title="新闻事件数据" href="http://tushare.org/newsevent.html"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script charset="UTF-8" src="./TuShare -DownData_files/bundle.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script charset="UTF-8" src="./TuShare -DownData_files/iframeWidget.js"></script></head>
+  <body><iframe id="sina_anywhere_iframe" style="display: none;" src="./TuShare -DownData_files/saved_resource.html"></iframe>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -DownData_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="document">
+            <div class="sphinxsidebar">
+                <h3>Table Of Contents</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="http://tushare.org/index.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id2">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id3">使用对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id4">使用前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id5">下载安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id6">版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id7">版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id8">友情链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/trading.html">交易数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id2">历史行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id3">复权数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id4">实时行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id5">历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id6">实时分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id7">当日历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id8">大盘指数行情列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id9">大单交易数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/reference.html">投资参考数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id2">分配预案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id3">业绩预告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id4">限售股解禁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id5">基金持股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id6">新股数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id7">融资融券（沪市）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id8">融资融券（深市）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/classifying.html">股票分类数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id2">行业分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id3">概念分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id4">地域分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id5">中小板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id6">创业板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id7">风险警示板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id8">沪深300成份及权重</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id9">上证50成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id10">中证500成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id11">终止上市股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id12">暂停上市股票列表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/fundamental.html">基本面数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id2">股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id3">业绩报告（主表）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id4">盈利能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id5">营运能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id6">成长能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id7">偿债能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id8">现金流量</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/macro.html">宏观经济数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id2">存款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id3">贷款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id4">存款准备金率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id5">货币供应量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id6">货币供应量(年底余额)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id7">国内生产总值(年度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id8">国内生产总值(季度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#gdp">三大需求对GDP贡献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id9">三大产业对GDP拉动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id10">三大产业贡献率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id11">居民消费价格指数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id12">工业品出厂价格指数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/newsevent.html">新闻事件数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id2">即时新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id3">信息地雷</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id4">新浪股吧</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/billboard.html">龙虎榜数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id2">每日龙虎榜列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id3">个股上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id4">营业部上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id5">机构席位追踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id6">机构成交明细</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/shibor.html">银行间同业拆放利率</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#shibor">Shibor拆放利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id2">银行报价数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id3">Shibor均值数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#lpr">贷款基础利率（LPR）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id4">LPR均值数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/storing.html">数据存储</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#csv">CSV文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#excel">Excel文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#hdf5">HDF5文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#json">JSON文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mysql">MySQL数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mongodb">MongoDB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/datayes.html">通联数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id2">用户注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#token">获取token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id3">调用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id4">证券概况</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id5">行情数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id6">基本面数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id7">股票信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id8">港股信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id9">基金信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id10">期货信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id11">期权信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id12">期权隐含波动率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id13">债券信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id14">指数信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id15">宏观行业</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id16">特色大数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/boxoffice.html">电影票房</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id2">实时票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id3">每日票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id4">月度票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id5">影院日度票房</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/donate.html">关于捐助</a></li>
+</ul>
+
+                
+
+                <p>
+
+
+            </p></div>
+             
+            <div class="documentwrapper">
+                <div class="bodywrapper">
+                    <div class="body">
+                        
+  <div class="section" id="id1">
+<h1>龙虎榜数据<a class="headerlink" href="http://tushare.org/billboard.html#id1" title="Permalink to this headline">¶</a></h1>
+<p><em>龙虎榜数据</em>接口提供历史龙虎榜上榜股票数据，主要包括以下类别：</p>
+<ul class="simple">
+<li>每日龙虎榜列表</li>
+<li>个股上榜统计</li>
+<li>营业部上榜统计</li>
+<li>龙虎榜机构席位追踪</li>
+<li>龙虎榜机构席位成交明细</li>
+</ul>
+<div class="section" id="id2">
+<h2>每日龙虎榜列表<a class="headerlink" href="http://tushare.org/billboard.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>按日期获取历史当日上榜的个股数据，如果一个股票有多个上榜原因，则会出现该股票多条数据。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>date</strong>：日期，格式YYYY-MM-DD</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>：代码</li>
+<li><strong>name</strong>:名称</li>
+<li><strong>pchange</strong>:当日涨跌幅</li>
+<li><strong>amount</strong>：龙虎榜成交额(万)</li>
+<li><strong>buy</strong>：买入额(万)</li>
+<li><strong>bratio</strong>：买入占总成交比例</li>
+<li><strong>sell</strong>：卖出额(万)</li>
+<li><strong>sratio</strong>：卖出占总成交比例</li>
+<li><strong>reason</strong>：上榜原因</li>
+<li><strong>date</strong>：日期</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">top_list</span><span class="p">(</span><span class="s">'2016-06-12'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>      code  name    pchange     amount       buy   bratio      sell   sratio  \
+0   000031  中粮地产  10.00%   65088.90  47737.36   16.88%  17351.54    6.14%
+1   000062  深圳华强   9.40%  145821.09  74001.50   14.84%   71819.6   14.41%
+2   000524  岭南控股  -5.79%   18638.73   5141.78   11.08%  13496.94   29.07%
+3   000565  渝三峡A   6.06%   92673.35  34028.05   15.74%   58645.3   27.13%
+4   000594   国恒退  -2.37%    6321.65   2954.52   19.98%   3367.12   22.77%
+5   000667  美好集团  10.07%   83561.02  61826.18   34.39%  21734.84   12.09%
+6   000778  新兴铸管  10.02%   86615.44  62921.36   22.54%  23694.08    8.49%
+7   000861  海印股份  10.00%   41110.43  20547.02   12.38%  20563.41   12.39%
+8   000875  吉电股份  -1.40%   60758.90  25346.82    3.41%  35412.08    4.76%
+9   000925  众合科技  -7.11%   26694.00  11262.44   12.54%  15431.56   17.19%
+              reason             date
+0          当日涨幅偏离值达7%的证券  2015-06-12
+1   连续三个交易日收盘价涨幅偏离值累计20%  2015-06-12
+2          当日跌幅偏离值达7%的证券  2015-06-12
+3          当日换手率达到20%的证券  2015-06-12
+4                退市整理的证券  2015-06-12
+5          当日涨幅偏离值达7%的证券  2015-06-12
+6          当日涨幅偏离值达7%的证券  2015-06-12
+7          当日涨幅偏离值达7%的证券  2015-06-12
+8   连续三个交易日收盘价跌幅偏离值累计20%  2015-06-12
+9          当日跌幅偏离值达7%的证券  2015-06-12
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>个股上榜统计<a class="headerlink" href="http://tushare.org/billboard.html#id3" title="Permalink to this headline">¶</a></h2>
+<p>获取近5、10、30、60日个股上榜统计数据,包括上榜次数、累积购买额、累积卖出额、净额、买入席位数和卖出席位数。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>days</strong>：统计周期5、10、30和60日，默认为5日</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>：代码</li>
+<li><strong>name</strong>:名称</li>
+<li><strong>count</strong>：上榜次数</li>
+<li><strong>bamount</strong>：累积购买额(万)</li>
+<li><strong>samount</strong>：累积卖出额(万)</li>
+<li><strong>net</strong>：净额(万)</li>
+<li><strong>bcount</strong>：买入席位数</li>
+<li><strong>scount</strong>：卖出席位数</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">cap_tops</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        code  name      count    bamount    samount      net  bcount  scount
+0    000938  紫光股份      4  448687.10  150943.85  297743.25      15      16
+1    600664  哈药股份      2  138601.33   33331.00  105270.33       8       9
+2    002176  江特电机      2  234690.51  147060.60   87629.91      11      10
+3    000547  闽福发A      1   99904.52   16947.10   82957.42       3       5
+4    000031  中粮地产      3  235178.00  158815.37   76362.63      11      11
+5    600105  永鼎股份      1  101681.85   29605.29   72076.56       2       5
+6    000667  美好集团      3  396702.59  326928.88   69773.71      13      14
+7    000778  新兴铸管      2  125025.10   59101.34   65923.76       7      10
+8    000506  中润资源      4  116138.23   55843.25   60294.99      18      18
+9    600037  歌华有线      1   58626.86       0.00   58626.86       5       0
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>营业部上榜统计<a class="headerlink" href="http://tushare.org/billboard.html#id4" title="Permalink to this headline">¶</a></h2>
+<p>获取营业部近5、10、30、60日上榜次数、累积买卖等情况。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>days</strong>：统计周期5、10、30和60日，默认为5日</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>broker</strong>：营业部名称</li>
+<li><strong>count</strong>：上榜次数</li>
+<li><strong>bamount</strong>：累积购买额(万)</li>
+<li><strong>bcount</strong>：买入席位数</li>
+<li><strong>samount</strong>：累积卖出额(万)</li>
+<li><strong>scount</strong>：卖出席位数</li>
+<li><strong>top3</strong>：买入前三股票</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">broker_tops</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>                   broker  count    bamount  bcount    samount  \
+0          宏源证券股份有限公司北京东四环中路证券营业部      2    8444.90       2       0.00
+1          安信证券股份有限公司深圳宝安海秀路证券营业部      3    8464.26       2    2725.54
+2            兴业证券股份有限公司武汉青年路证券营业部     19   38013.27      12   34859.30
+3             齐鲁证券有限公司深圳泰然九路证券营业部      2    3525.10       1    2632.68
+4      平安证券有限责任公司深圳蛇口招商路招商大厦证券营业部      3    2362.48       1   18339.89
+5          中国中投证券有限责任公司自贡解放路证券营业部      2       0.00       0    5749.10
+6          中信建投证券股份有限公司兰州皋兰路证券营业部      2    2040.23       1    3899.36
+7     平安证券有限责任公司深圳深南东路罗湖商务中心证券营业部     16   15331.29      10    5345.91
+8            财通证券股份有限公司青田前路街证券营业部      3    9106.47       2    4410.48
+9            中信证券股份有限公司上海溧阳路证券营业部     51  496606.40      34  169854.11
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>机构席位追踪<a class="headerlink" href="http://tushare.org/billboard.html#id5" title="Permalink to this headline">¶</a></h2>
+<p>获取机构近5、10、30、60日累积买卖次数和金额等情况。</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>days</strong>：统计周期5、10、30和60日，默认为5日</li>
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>:代码</li>
+<li><strong>name</strong>:名称</li>
+<li><strong>bamount</strong>:累积买入额(万)</li>
+<li><strong>bcount</strong>:买入次数</li>
+<li><strong>samount</strong>:累积卖出额(万)</li>
+<li><strong>scount</strong>:卖出次数</li>
+<li><strong>net</strong>:净额(万)</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">inst_tops</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        code  name    bamount  bcount    samount  scount       net
+0    600105  永鼎股份   91387.45       4       0.00       0  91387.45
+1    000547  闽福发A   73356.70       3    2728.96       1  70627.74
+2    601766  中国中车  208936.00       3  153129.90       2  55806.10
+3    600651  飞乐音响   53667.30       4    6528.90       2  47138.40
+4    600829  人民同泰   36975.72       4       0.00       0  36975.72
+5    600172  黄河旋风   36635.00       1       0.00       0  36635.00
+6    000957  中通客车   34517.41       8       0.00       0  34517.41
+7    300030  阳普医疗   39764.64       8    5574.85       2  34189.79
+8    600765  中航重机   32228.20       1       0.00       0  32228.20
+9    601188  龙江交通   32069.30       2       0.00       0  32069.30
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>机构成交明细<a class="headerlink" href="http://tushare.org/billboard.html#id6" title="Permalink to this headline">¶</a></h2>
+<p>获取最近一个交易日机构席位成交明细统计数据</p>
+<p>参数说明：</p>
+<ul class="simple">
+<li><strong>retry_count</strong>：当网络异常后重试次数，默认为3</li>
+<li><strong>pause</strong>:重试时停顿秒数，默认为0</li>
+</ul>
+<p>返回值说明：</p>
+<ul class="simple">
+<li><strong>code</strong>:代码</li>
+<li><strong>name</strong>:名称</li>
+<li><strong>date</strong>:交易日期</li>
+<li><strong>bamount</strong>:机构席位买入额(万)</li>
+<li><strong>samount</strong>:机构席位卖出额(万)</li>
+<li><strong>type</strong>:类型</li>
+</ul>
+<p>调用方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">inst_detail</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>结果显示：</p>
+<div class="highlight-python"><div class="highlight"><pre>        code  name        date    bamount    samount                     type
+0    000062  深圳华强  2015-06-17    4074.40    8226.87              涨幅偏离值达7%的证券
+1    002632  道明光学  2015-06-17    1504.79       0.00               振幅值达15%的证券
+2    300396  迪瑞医疗  2015-06-17   13880.22       0.00               换手率达20%的证券
+3    603300  华铁科技  2015-06-17       0.00    1648.71               换手率达20%的证券
+4    002491  通鼎互联  2015-06-17    2087.20    1117.48               振幅值达15%的证券
+5    300338  开元仪器  2015-06-17    1085.86       0.00               振幅值达15%的证券
+6    603300  华铁科技  2015-06-17       0.00    1648.71  连续三个交易日内，涨幅偏离值累计达20%的证券
+7    300232  洲明科技  2015-06-17    4592.67       0.00               振幅值达15%的证券
+8    000037  深南电A  2015-06-17       0.00    3004.47               振幅值达15%的证券
+9    002472  双环传动  2015-06-17    6814.46       0.00               振幅值达15%的证券
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -DownData_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Jimmy Liu.
+	waditu.<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256440418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256440418%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1256440418"></span><script src="http://s11.cnzz.com/z_stat.php?id=1256440418&amp;show=pic" type="text/javascript"></script>
+    </div>
+  
+</body><div></div></html>

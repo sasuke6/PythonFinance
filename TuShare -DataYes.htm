@@ -1,0 +1,861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0031)http://tushare.org/datayes.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" data-livestyle-extension="available"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>TuShare -财经数据接口包</title>
+    <meta content="免费股票数据,开源股票数据接口,股票数据,股票数据接口,python股票数据,财经数据,金融数据" name="keywords">
+    <meta name="description" content="TuShare为金融数据分析提供便捷、快速的接口，与pandas无缝对接">
+	<meta content="index,follow" name="robots">
+	<meta content="TuShare" name="Jimmy Liu">
+    <meta name="application-name" content="tushare">
+	<script src="http://hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828"></script><script src="./TuShare -DataYes_files/wb.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="./TuShare -DataYes_files/nature.css" type="text/css">
+    <link rel="stylesheet" href="./TuShare -DataYes_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./TuShare -DataYes_files/jquery.js"></script>
+    <script type="text/javascript" src="./TuShare -DataYes_files/underscore.js"></script>
+    <script type="text/javascript" src="./TuShare -DataYes_files/doctools.js"></script>
+    <link rel="top" title="TuShare 0.4.3 documentation" href="http://tushare.org/index.html">
+    <link rel="next" title="电影票房" href="http://tushare.org/boxoffice.html">
+    <link rel="prev" title="数据存储" href="http://tushare.org/storing.html"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5f79bea9912c6308c730297943383828";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script charset="UTF-8" src="./TuShare -DataYes_files/bundle.js"></script><script charset="UTF-8" src="./TuShare -DataYes_files/iframeWidget.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script charset="UTF-8" id="scriptRequest_script_14851693250572" type="text/javascript" src="http://widget.weibo.com/public/aj_relationship.php?fuid=1304687120&amp;callback=STK_14851693250571"></script><script charset="UTF-8" id="scriptRequest_script_14851693250574" type="text/javascript" src="http://widget.weibo.com/public/aj_relationship.php?fuid=1304687120&amp;callback=STK_14851693250573"></script></head>
+  <body><iframe id="sina_anywhere_iframe" style="display: none;" src="./TuShare -DataYes_files/saved_resource.html"></iframe>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -DataYes_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="document">
+            <div class="sphinxsidebar">
+                <h3>Table Of Contents</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="http://tushare.org/index.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id2">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id3">使用对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id4">使用前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id5">下载安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id6">版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id7">版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/index.html#id8">友情链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/trading.html">交易数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id2">历史行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id3">复权数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id4">实时行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id5">历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id6">实时分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id7">当日历史分笔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id8">大盘指数行情列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/trading.html#id9">大单交易数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/reference.html">投资参考数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id2">分配预案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id3">业绩预告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id4">限售股解禁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id5">基金持股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id6">新股数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id7">融资融券（沪市）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/reference.html#id8">融资融券（深市）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/classifying.html">股票分类数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id2">行业分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id3">概念分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id4">地域分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id5">中小板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id6">创业板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id7">风险警示板分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id8">沪深300成份及权重</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id9">上证50成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id10">中证500成份股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id11">终止上市股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/classifying.html#id12">暂停上市股票列表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/fundamental.html">基本面数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id2">股票列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id3">业绩报告（主表）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id4">盈利能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id5">营运能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id6">成长能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id7">偿债能力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/fundamental.html#id8">现金流量</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/macro.html">宏观经济数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id2">存款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id3">贷款利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id4">存款准备金率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id5">货币供应量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id6">货币供应量(年底余额)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id7">国内生产总值(年度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id8">国内生产总值(季度)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#gdp">三大需求对GDP贡献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id9">三大产业对GDP拉动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id10">三大产业贡献率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id11">居民消费价格指数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/macro.html#id12">工业品出厂价格指数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/newsevent.html">新闻事件数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id2">即时新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id3">信息地雷</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/newsevent.html#id4">新浪股吧</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/billboard.html">龙虎榜数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id2">每日龙虎榜列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id3">个股上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id4">营业部上榜统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id5">机构席位追踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/billboard.html#id6">机构成交明细</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/shibor.html">银行间同业拆放利率</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#shibor">Shibor拆放利率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id2">银行报价数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id3">Shibor均值数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#lpr">贷款基础利率（LPR）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/shibor.html#id4">LPR均值数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/storing.html">数据存储</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#csv">CSV文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#excel">Excel文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#hdf5">HDF5文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#json">JSON文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mysql">MySQL数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/storing.html#mongodb">MongoDB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/datayes.html">通联数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id2">用户注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#token">获取token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id3">调用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id4">证券概况</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id5">行情数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id6">基本面数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id7">股票信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id8">港股信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id9">基金信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id10">期货信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id11">期权信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id12">期权隐含波动率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id13">债券信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id14">指数信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id15">宏观行业</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/datayes.html#id16">特色大数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/boxoffice.html">电影票房</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id2">实时票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id3">每日票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id4">月度票房</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://tushare.org/boxoffice.html#id5">影院日度票房</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://tushare.org/donate.html">关于捐助</a></li>
+</ul>
+
+                
+
+                <p>
+
+
+            </p></div>
+             
+            <div class="documentwrapper">
+                <div class="bodywrapper">
+                    <div class="body">
+                        
+  <div class="section" id="id1">
+<h1>通联数据<a class="headerlink" href="http://tushare.org/datayes.html#id1" title="Permalink to this headline">¶</a></h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://m.datayes.com/" target="_blank"><b>通联数据</b></a>（DataYes）是国内目前最大的开放金融数据平台，整合了包括股票、基金、期货、期权和港股方面的全品类金融数据。从数据的多样性、质量性和稳定性的角度考虑，遵从TuShare一贯的开放、简单易用的特点，TuShare为用户集成了绝大部分通联数据的接口。虽然通联数据大部分数据接口都是免费使用，但毕竟是一家商业公司，使用前提是需要注册通联数据的用户账号，当然，注册过程还是相当简单的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了让TuShare用户更好的使用通联数据接口，请大家按以下步骤注册和操作，以便能顺利调用通联数据接口，用户注册必须从以下TuShare网站提供的链接进入注册环节，否则将不提供技术支持和服务。</p>
+<div class="section" id="id2">
+<h2>用户注册<a class="headerlink" href="http://tushare.org/datayes.html#id2" title="Permalink to this headline">¶</a></h2>
+<p>打开<a class="reference external" target="_blank" href="http://router.wmcloud.com/6">通联数据</a>首页(<a class="reference external" target="_blank" href="http://router.wmcloud.com/6">http://router.wmcloud.com/6</a>)，并点击“注册”按钮，进入用户注册界面：</p>
+<div class="figure">
+<a href="https://m.datayes.com/" target="_blank"><img alt="" src="./TuShare -DataYes_files/1.png"></a>
+</div>
+<p>选择“个人”，进入用户信息界面填写个人信息，为了在QQ群里能迅速定位个人的问题，强烈建议您用qq邮箱注册通联数据的账号：</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/2.png">
+</div>
+<p>通过邮箱注册账号，会收到验证邮件，通过点击邮件里的链接，设置通联数据的账号密码完成注册。</p>
+</div>
+<div class="section" id="token">
+<h2>获取token<a class="headerlink" href="http://tushare.org/datayes.html#token" title="Permalink to this headline">¶</a></h2>
+<p>登录通联数据账户，进入应用列表界面，点击“数据开放平台”，进入开放平台首页：</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/3.png">
+</div>
+<p>点击“我的数据”-&gt;“开发者选项”-&gt;“成为开发者”：</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/7.png">
+</div>
+<p>然后，点击“我的凭证”-&gt;“显示凭证”，看到token字符串之后拷贝，之后会在接口调用的时候使用。</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/4.png">
+</div>
+</div>
+<div class="section" id="id3">
+<h2>调用方法<a class="headerlink" href="http://tushare.org/datayes.html#id3" title="Permalink to this headline">¶</a></h2>
+<p>在安装TuShare后，或者在调用通联数据接口前，需要先设置通联数据账户的token凭证码（只需设置一次，如果重新生成token，需要在TuShare里重新设置token码），方法如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tushare</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">set_token</span><span class="p">(</span><span class="s">'xxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>查看自己的token码，方法如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ts</span><span class="o">.</span><span class="n">get_token</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>获取某一类数据： mkt = ts.Market() df =
+mkt.TickRTSnapshot(securityID=‘000001.XSHE’)</p>
+</div>
+<div class="section" id="id4">
+<h2>证券概况<a class="headerlink" href="http://tushare.org/datayes.html#id4" title="Permalink to this headline">¶</a></h2>
+<p>可以查询机构ID编码，证券ID编码，证券上市信息，证券板块分类以及交易所交易日历等信息。所有证券概况的方法都在Master()类里，可以查询到以下数据：</p>
+<ul class="simple">
+<li>SecID–证券编码及基本上市信息</li>
+<li>TradeCal –交易所交易日历</li>
+<li>Industry –行业分类标准</li>
+<li>EquInfo –沪深股票键盘精灵</li>
+<li>SecTypeRegionRel –沪深股票地域分类</li>
+<li>SecTypeRegion –地域分类</li>
+<li>SecTypeRel –证券板块成分</li>
+<li>SecType –证券板块</li>
+<li>SysCode –参数常量值集合</li>
+</ul>
+<p>具体的调用参数和返回的field字段可以通过查看文档自行设定，文档地址：
+<a class="reference external" target="_blank" href="https://app.wmcloud.com/open/api?lang=zh">https://app.wmcloud.com/open/api?lang=zh</a></p>
+<p>调用样例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取一段时间内的日期是否为交易日，isOpen=1是交易日，isOpen=0为休市</span>
+<span class="n">mt</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Master</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">TradeCal</span><span class="p">(</span><span class="n">exchangeCD</span><span class="o">=</span><span class="s">'XSHG'</span><span class="p">,</span> <span class="n">beginDate</span><span class="o">=</span><span class="s">'20150928'</span><span class="p">,</span> <span class="n">endDate</span><span class="o">=</span><span class="s">'20151010'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'calendarDate,isOpen,prevTradeDate'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>   calendarDate  isOpen prevTradeDate
+0    2015-09-28       1    2015-09-25
+1    2015-09-29       1    2015-09-28
+2    2015-09-30       1    2015-09-29
+3    2015-10-01       0    2015-09-30
+4    2015-10-02       0    2015-09-30
+5    2015-10-03       0    2015-09-30
+6    2015-10-04       0    2015-09-30
+7    2015-10-05       0    2015-09-30
+8    2015-10-06       0    2015-09-30
+9    2015-10-07       0    2015-09-30
+10   2015-10-08       1    2015-09-30
+11   2015-10-09       1    2015-10-08
+12   2015-10-10       0    2015-10-09
+</pre></div>
+</div>
+<p>通过查看通联数据的文档，可以获取以下详细信息，根据自己的实际需要来设定：</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/5.png">
+</div>
+</div>
+<div class="section" id="id5">
+<h2>行情数据<a class="headerlink" href="http://tushare.org/datayes.html#id5" title="Permalink to this headline">¶</a></h2>
+<p>市场行情数据API提供实时市场行情数据快照，当天市场行情数据分钟线，历史日线数据和历史市场高频数据（level1)。
+证券种类涵盖股票，指数，债券，基金；数据涵盖在上证（XSHG）和深圳（XSHE）交易的证券以及港股（XHKG）证券，港股目前仅支持一档行情。所有行情数据的方法都在Market()类里。</p>
+<ul class="simple">
+<li>TickRTSnapshot –获取最新市场信息快照</li>
+<li>TickRTSnapshotIndex –获取指数成份股的最新市场信息快照</li>
+<li>IndustryTickRTSnapshot –获取行业资金流向</li>
+<li>FutureTickRTSnapshot –获取期货最新市场信息快照</li>
+<li>OptionTickRTSnapshot –获取期权最新市场信息快照</li>
+<li>SecTips –沪深股票今日停复牌</li>
+<li>EquRTRank –获取沪深股票涨跌幅排行</li>
+<li>TickRTIntraDay –获取一只股票,指数,债券,基金在当日内时间段Level1信息</li>
+<li>BarRTIntraDay –获取当日分钟线</li>
+<li>BarRTIntraDayOneMinute –获取所有股票某一分钟的分钟线</li>
+<li>FutureBarRTIntraDay –获取当日期货分钟线</li>
+<li>FutureTickRTIntraDay –获取一只期货在本清算日内某时间段的行情信息</li>
+<li>MktEqud –沪深股票日线行情</li>
+<li>MktEqudAdj –沪深股票复权行情</li>
+<li>MktAdjf –沪深股票复权因子</li>
+<li>MktFutd –期货日线行情</li>
+<li>MktMFutd –期货主力、连续合约日行情</li>
+<li>MktIdxd –指数日线行情</li>
+<li>MktOptd –期权日行情</li>
+<li>MktBlockd –沪深大宗交易</li>
+<li>MktBondd –债券日行情</li>
+<li>MktRepod –债券回购交易日行情</li>
+<li>MktHKEqud –港股日线行情</li>
+<li>MktFundd–基金日行情</li>
+<li>MktFunddAdjAf–基金后复权行情</li>
+<li>MktFutMTR–期货会员成交量日排名</li>
+<li>MktFutMSR–期货会员空头持仓日排名</li>
+<li>MktFutMLR–期货会员多头持仓日排名</li>
+<li>StockFactorsOneDay –获取多只股票历史上某一天的因子数据</li>
+<li>StockFactorsDateRange –获取一只股票历史上某一时间段的因子数据</li>
+</ul>
+<p>调用方法示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取历史某一日股票行情数据，包括了停牌股票（停牌的报价都是0）</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Market</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">MktEqud</span><span class="p">(</span><span class="n">tradeDate</span><span class="o">=</span><span class="s">'20150917'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'ticker,secShortName,preClosePrice,openPrice,highestPrice,lowestPrice,closePrice,turnoverVol,turnoverRate'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'ticker'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'ticker'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>      ticker secShortName   preClosePrice  openPrice  highestPrice  \
+0     000001         平安银行         10.900     10.850        11.140
+1     000002          万科A         13.430     13.350        13.390
+2     000004         国农科技         26.500     26.260        27.350
+3     000005         世纪星源          6.630      6.600         7.090
+4     000006         深振业A          9.540      9.580        10.490
+5     000007         零七股份         29.170      0.000         0.000
+6     000008         神州高铁         24.600     24.010        27.050
+7     000009         中国宝安          9.910      9.910        10.540
+8     000010          深华新          6.340      6.380         6.700
+9     000011         深物业A         10.550     10.500        11.610
+10    000012          南玻A          8.330      8.290         8.560
+
+        lowestPrice  closePrice  turnoverVol  turnoverRate
+0          10.770      10.770     62079854        0.0053
+1          13.100      13.100     61252961        0.0063
+2          25.030      25.330      5496712        0.0655
+3           6.200       6.300     51033136        0.0559
+4           9.400       9.650     61232037        0.0456
+5           0.000      29.170            0        0.0000
+6          23.300      24.990     12354361        0.0578
+7           9.800       9.910     81796088        0.0549
+8           6.140       6.150     20251766        0.0565
+9          10.360      10.830     37026937        0.2105
+10          8.050       8.050     19792960        0.0152
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id6">
+<h2>基本面数据<a class="headerlink" href="http://tushare.org/datayes.html#id6" title="Permalink to this headline">¶</a></h2>
+<p>可以查询沪深上市公司披露的2007年以来的所有三大财务报表数据，以及业绩预告和快报数据信息。所有基本面方法都在Fundamental()类里。</p>
+<ul class="simple">
+<li>FdmtBS–合并资产负债表</li>
+<li>FdmtBSBank–银行业资产负债表</li>
+<li>FdmtBSSecu–证券业资产负债表</li>
+<li>FdmtBSIndu–一般工商业资产负债表</li>
+<li>FdmtBSInsu–保险业资产负债表</li>
+<li>FdmtCF–合并现金流量表</li>
+<li>FdmtCFBank–银行业现金流量表</li>
+<li>FdmtCFSecu–证券业现金流量表</li>
+<li>FdmtCFIndu–一般工商业现金流量表</li>
+<li>FdmtCFInsu–保险业现金流量表</li>
+<li>FdmtIS–合并利润表</li>
+<li>FdmtISBank–银行业利润表</li>
+<li>FdmtISSecu–证券业利润表</li>
+<li>FdmtISIndu–一般工商业利润表</li>
+<li>FdmtISInsu–保险业利润表</li>
+<li>FdmtEe–业绩快报</li>
+<li>FdmtEf–业绩预告</li>
+</ul>
+<p>调用示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Fundamental</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">bd</span><span class="o">.</span><span class="n">FdmtBS</span><span class="p">(</span><span class="n">ticker</span><span class="o">=</span><span class="s">'600848'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'ticker,TCA,fixedAssets,inventories,intanAssets'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>    ticker           TCA   fixedAssets   inventories  intanAssets
+0   600848  9.993652e+08  2.512698e+08  2.161982e+08  25386816.40
+1   600848  9.473522e+08  2.542558e+08  2.141980e+08  25757951.69
+2   600848  9.266374e+08  2.540905e+08  1.895277e+08  26082865.49
+3   600848  9.266374e+08  2.540905e+08  1.895277e+08  26082865.49
+4   600848  9.266374e+08  2.540905e+08  1.895277e+08  26082865.49
+5   600848  1.112599e+09  2.563483e+08  2.229435e+08  25452652.55
+6   600848  1.116148e+09  2.616375e+08  2.294174e+08  25340796.32
+7   600848  1.121110e+09  2.613411e+08  2.404694e+08  25645069.46
+8   600848  1.079947e+09  2.598095e+08  2.086598e+08  25949342.60
+9   600848  1.079947e+09  2.598095e+08  2.086598e+08  25949342.60
+10  600848  1.079947e+09  2.598095e+08  2.086598e+08  25949342.60
+11  600848  1.079947e+09  2.598095e+08  2.086598e+08  25949342.60
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id7">
+<h2>股票信息<a class="headerlink" href="http://tushare.org/datayes.html#id7" title="Permalink to this headline">¶</a></h2>
+<p>可以查询沪深股票的基本信息和IPO，配股，分红，拆股，股改，行业，以及回报率等信息，所有股票信息的获取方法在Equity()类里。</p>
+<ul class="simple">
+<li>Equ–股票基本信息</li>
+<li>EquAllot–股票配股信息</li>
+<li>EquDiv–股票分红信息</li>
+<li>EquIndustry–股票行业分类</li>
+<li>EquIPO–股票首次上市信息</li>
+<li>EquRef–股票股权分置</li>
+<li>EquRetud–股票每日回报率</li>
+<li>EquSplits–股票拆股信息</li>
+<li>FstTotal–沪深融资融券每日汇总信息</li>
+<li>FstDetail–沪深融资融券每日交易明细信息</li>
+<li>EquShare –公司股本变动</li>
+<li>SecST –沪深股票ST标记</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取沪深A股正常股票信息，listStatusCD上市状态，可选状态有L——上市，S——暂停，DE——已退市，UN——未上市</span>
+<span class="n">eq</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Equity</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">eq</span><span class="o">.</span><span class="n">Equ</span><span class="p">(</span><span class="n">equTypeCD</span><span class="o">=</span><span class="s">'A'</span><span class="p">,</span> <span class="n">listStatusCD</span><span class="o">=</span><span class="s">'L'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'ticker,secShortName,totalShares,nonrestFloatShares'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'ticker'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'ticker'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>    ticker  secShortName  totalShares   nonrestFloatShares
+0     000001         平安银行  14308676139         11804054579
+1     000002          万科A  11048058100         11032671101
+2     000004         国农科技     83976684            83875459
+3     000005         世纪星源    914333607           913743007
+4     000006         深振业A   1349995046          1341487400
+5     000007         零七股份    230965363           205887138
+6     000008         神州高铁    803144309           213594042
+7     000009         中国宝安   1592107386          1489669062
+8     000010          深华新    588069788           358157448
+9     000011         深物业A    595979092           243467869
+10    000012          南玻A   2075335560          2065025819
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id8">
+<h2>港股信息<a class="headerlink" href="http://tushare.org/datayes.html#id8" title="Permalink to this headline">¶</a></h2>
+<p>可以查询香港交易所股票基本信息和上市公司行为等信息，所有港股信息的获取方法均在HKequity()类里。</p>
+<ul class="simple">
+<li>HKEqu –港股基本信息</li>
+<li>HKEquCA –港股公司行为</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取港股信息</span>
+<span class="n">hk</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">HKequity</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">HKEqu</span><span class="p">(</span><span class="n">listStatusCD</span><span class="o">=</span><span class="s">'L'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'secShortName,listDate,tradingUnit,partyID'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'listDate'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>            secShortName    listDate  tradingUnit   partyID
+837             中国顺客隆  2015-09-10         1000      5616
+1233             良斯集团  2015-09-08         4000      5538
+1197           前进控股集团  2015-09-02        10000      5535
+1241           宏基集团控股  2015-08-11         5000    829623
+1805           柏荣集团控股  2015-08-10        10000    226483
+1559             中国通号  2015-08-07         1000     88867
+1608              金嗓子  2015-07-15          500    163796
+1527             中智药业  2015-07-13         1000    526347
+1628             吉辉控股  2015-07-10         5000    788453
+1817           中国育儿网络  2015-07-08         2000    442617
+1446             环球医疗  2015-07-08          500    329752
+1196             培力控股  2015-07-08          500    500223
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id9">
+<h2>基金信息<a class="headerlink" href="http://tushare.org/datayes.html#id9" title="Permalink to this headline">¶</a></h2>
+<p>可以查询基金基本信息和资产配置，每日净值，收益情况，净值调整等信息，所有基金信息的获取方法均在Fund()类里。</p>
+<ul class="simple">
+<li>Fund–基金基本信息</li>
+<li>FundNav–基金历史净值(货币型,短期理财债券型除外)</li>
+<li>FundDivm–基金历史收益(货币型,短期理财债券型)</li>
+<li>FundDiv–基金净值调整</li>
+<li>FundAssets–基金资产配置</li>
+<li>FundHoldings–基金持仓明细</li>
+<li>FundETFPRList–ETF基金申赎清单基本信息</li>
+<li>FundETFCons–ETF基金申赎清单成分券信息</li>
+<li>MktFutMLR–基金评级</li>
+<li>FundSharesChg–基金份额变动</li>
+<li>FundLeverageInfo–分级基金基本信息</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取基金的净值调整信息，包括基金分红和基金拆分两种调整情况</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Fund</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">FundDiv</span><span class="p">(</span><span class="n">ticker</span><span class="o">=</span><span class="s">'184688'</span><span class="p">,</span> <span class="n">adjustedType</span><span class="o">=</span><span class="s">'D'</span><span class="p">,</span><span class="n">beginDate</span><span class="o">=</span><span class="s">'20000101'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'secShortName,effectDate,publishDate,dividendAfTax,dividendBfTax'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>        secShortName  effectDate publishDate  dividendAfTax  dividendBfTax
+0        南方开元封闭  2000-04-04  2000-03-28          0.275          0.275
+1        南方开元封闭  2001-04-05  2001-03-30          0.530          0.530
+2        南方开元封闭  2002-04-05  2002-03-29          0.014          0.014
+3        南方开元封闭  2004-06-30  2004-06-24          0.060          0.060
+4        南方开元封闭  2006-04-05  2006-03-29          0.030          0.030
+5        南方开元封闭  2007-04-02  2007-03-27          0.500          0.500
+6        南方开元封闭  2007-04-25  2007-04-18          0.100          0.100
+7        南方开元封闭  2007-07-25  2007-07-11          0.420          0.420
+8        南方开元封闭  2007-11-02  2007-10-25          0.300          0.300
+9        南方开元封闭  2008-04-11  2008-03-29          1.372          1.372
+10       南方开元封闭  2010-04-14  2010-04-03          0.050          0.050
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id10">
+<h2>期货信息<a class="headerlink" href="http://tushare.org/datayes.html#id10" title="Permalink to this headline">¶</a></h2>
+<p>可以查询中国四大期货交易所期货合约的基本要素信息和和国债期货的转换因子信息</p>
+<ul class="simple">
+<li>Futu–期货合约信息</li>
+<li>FutuConvf–国债期货转换因子信息</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Future</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Futu</span><span class="p">(</span><span class="n">exchangeCD</span><span class="o">=</span><span class="s">'CCFX'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'secShortName,contractObject,minChgPriceNum,lastTradeDate,deliMethod'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>     secShortName           contractObject  minChgPriceNum lastTradeDate deliMethod
+0    中证500股指期货1505             IC           0.200    2015-05-15          C
+1    中证500股指期货1506             IC           0.200    2015-06-19          C
+2    中证500股指期货1507             IC           0.200    2015-07-17          C
+3    中证500股指期货1508             IC           0.200    2015-08-21          C
+4    中证500股指期货1509             IC           0.200    2015-09-18          C
+5    中证500股指期货1510             IC           0.200    2015-10-16          C
+6    中证500股指期货1511            NaN           0.200    2015-11-20        NaN
+7    中证500股指期货1512             IC           0.200    2015-12-18          C
+8    中证500股指期货1603             IC           0.200    2016-03-18          C
+9    沪深300股指期货1005             IF             NaN    2010-05-21        NaN
+10   沪深300股指期货1006             IF             NaN    2010-06-18        NaN
+11   沪深300股指期货1007             IF             NaN    2010-07-16        NaN
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id11">
+<h2>期权信息<a class="headerlink" href="http://tushare.org/datayes.html#id11" title="Permalink to this headline">¶</a></h2>
+<p>可以查询期权合约的基本信息、每日盘前静态数据和期权标的物信息</p>
+<ul class="simple">
+<li>Opt –期权基本信息</li>
+<li>OptVar –期权品种信息</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre>＃获取期权合约编码，交易代码，交易市场，标的等相关信息
+fd = ts.Options()
+df = fd.Opt(contractStatus='L,DE', field='optID,secShortName,varShortName,listDate')
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>        optID   secShortName    　varShortName    listDate
+0    10000001   50ETF购3月2200    华夏上证50ETF  2015-02-09
+1    10000002   50ETF购3月2250    华夏上证50ETF  2015-02-09
+2    10000003   50ETF购3月2300    华夏上证50ETF  2015-02-09
+3    10000004   50ETF购3月2350    华夏上证50ETF  2015-02-09
+4    10000005   50ETF购3月2400    华夏上证50ETF  2015-02-09
+5    10000006   50ETF沽3月2200    华夏上证50ETF  2015-02-09
+6    10000007   50ETF沽3月2250    华夏上证50ETF  2015-02-09
+7    10000008   50ETF沽3月2300    华夏上证50ETF  2015-02-09
+8    10000009   50ETF沽3月2350    华夏上证50ETF  2015-02-09
+9    10000010   50ETF沽3月2400    华夏上证50ETF  2015-02-09
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id12">
+<h2>期权隐含波动率<a class="headerlink" href="http://tushare.org/datayes.html#id12" title="Permalink to this headline">¶</a></h2>
+<p>IVolatility是全球领先的期权数据及分析服务提供商。公司总部位于纽约。15年来，公司致力于采集各国期权信息，并在数据基础上，为不同专业程度的投资者（从初级投资者到对冲基金的专业投资人士）提供分析工具以获取投资优势。
+IVolatility的客户遍布全球，包括对冲基金和各类机构（交易所、经纪公司、银行、教育机构等）
+。例如，公司和美国芝加哥期权交易所（CBOE）联合开发了期权分析工具。
+2015年8月，IVolatility
+与通联数据合作，为中国市场开发了隐含波动率产品（implied
+volatilities）。本产品目前涵盖了2015年2月挂牌上市的上证ETF50期权，并将持续更新新上市的期权产品。</p>
+<ul class="simple">
+<li>DerIv –原始隐含波动率</li>
+<li>DerIvHv –历史波动率</li>
+<li>DerIvIndex –隐含波动率指数</li>
+<li>DerIvIvpDelta –隐含波动率曲面(基于参数平滑曲线)</li>
+<li>DerIvParam –隐含波动率参数化曲面</li>
+<li>DerIvRawDelta –隐含波动率曲面(基于原始隐含波动率)</li>
+<li>DerIvSurface –隐含波动率曲面(在值程度)</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre>＃原始隐含波动率
+iv = ts.IV()
+df = iv.DerIv(beginDate='20150810', endDate='20150810', SecID='510050.XSHG')
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>           SecID  ticker exchangeCD secShortName   tradeDate  closePriceAdj  \
+0    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+1    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+2    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+3    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+4    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+5    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+6    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+7    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+8    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+9    510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+10   510050.XSHG  510050       XSHG    华夏上证50ETF  2015-08-10          2.616
+</pre></div>
+</div>
+<p>以上类别数据为收费数据，请到通联数据官网购买：<a class="reference external" href="https://app.wmcloud.com/datamkt/search?vendorId=19&amp;lang=zh">https://app.wmcloud.com/datamkt/search?vendorId=19&amp;lang=zh</a></p>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id13">
+<h2>债券信息<a class="headerlink" href="http://tushare.org/datayes.html#id13" title="Permalink to this headline">¶</a></h2>
+<p>可以查询债券基本信息和发行上市，付息，利率，评级和评级变动，债券发行人评级及变动，担保人评级及变动等信息,所有债券信息获取方法都在Bond()类里。</p>
+<ul class="simple">
+<li>Bond–债券基本信息</li>
+<li>BondAi–债券应计利息</li>
+<li>BondCf–债券付息兑付数据</li>
+<li>BondCoupon–债券票面利率</li>
+<li>BondGuar–债券担保</li>
+<li>BondIssue–债券发行信息</li>
+<li>BondOption–债券选择权</li>
+<li>BondRating–债券评级</li>
+<li>GuarRating–债券担保人信用评级</li>
+<li>IssuerRating–债券发行人信用评级</li>
+<li>Repo –债券回购基本信息</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#固定利率债券、浮动利率债券每个计息周期的票面利率，包括分段计息的具体利率。</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Bond</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">BondCoupon</span><span class="p">(</span><span class="n">ticker</span><span class="o">=</span><span class="s">'000001'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'secShortName,perValueDate,refRatePer,coupon'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>    secShortName perValueDate  refRatePer  coupon
+0       00国债01   2000-02-24        2.25    2.90
+1       00国债01   2001-02-24        2.25    2.90
+2       00国债01   2002-02-24        1.98    2.63
+3       00国债01   2003-02-24        1.98    2.63
+4       00国债01   2004-02-24        1.98    2.63
+5       00国债01   2005-02-24        2.25    2.90
+6       00国债01   2006-02-24        2.25    2.90
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id14">
+<h2>指数信息<a class="headerlink" href="http://tushare.org/datayes.html#id14" title="Permalink to this headline">¶</a></h2>
+<p>可以查询指数基本要素信息和成分构成情况，国内外指数的成分股权重情况，中证指数除数信息和其发布的指数成分股的自由流通股和权重信息</p>
+<ul class="simple">
+<li>Idx–指数基本信息</li>
+<li>IdxCons–指数成分构成</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#获取国内外指数的成分构成情况，包括指数成份股名称、成份股代码、入选日期、剔除日期等。</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Idx</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">IdxCons</span><span class="p">(</span><span class="n">ticker</span><span class="o">=</span><span class="s">'000001'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'secShortName,consTickerSymbol,consShortName,isNew,intoDate'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>        secShortName  consTickerSymbol      consShortName  isNew    intoDate
+1113         上证综指            603838          四通股份      1  2015-07-15
+1110         上证综指            603979           金诚信      1  2015-07-14
+1112         上证综指            603223          恒通股份      1  2015-07-14
+1111         上证综指            603085          天成自控      1  2015-07-14
+1107         上证综指            603117          万林股份      1  2015-07-13
+1109         上证综指            603116           红蜻蜓      1  2015-07-13
+1108         上证综指            603589           口子窖      1  2015-07-13
+1106         上证综指            601211          国泰君安      1  2015-07-10
+1105         上证综指            601368          绿城水务      1  2015-06-29
+1102         上证综指            603616          韩建河山      1  2015-06-26
+1104         上证综指            603066          音飞储存      1  2015-06-26
+1103         上证综指            601968          宝钢包装      1  2015-06-26
+1101         上证综指            601985          中国核电      1  2015-06-25
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id15">
+<h2>宏观行业<a class="headerlink" href="http://tushare.org/datayes.html#id15" title="Permalink to this headline">¶</a></h2>
+<p>获取宏观行业数据，所有宏观和行业数据均在Macro()类里。</p>
+<ul class="simple">
+<li>ChinaDataGDP –GDP</li>
+<li>ChinaDataECI –宏观数据经济景气指数</li>
+<li>ChinaDataPMI –PMI</li>
+<li>ChinaDataCCI –消费者景气指数</li>
+<li>ChinaDataEconomistsBoomIndex –经济学家景气指数</li>
+<li>ChinaDataIndustrialBusinessClimateIndex –工业企业景气指数</li>
+<li>ChinaDataCPI –CPI</li>
+<li>ChinaDataPPI –PPI</li>
+<li>ChinaDataIndustry –工业</li>
+<li>ChinaDataRetailSales –国内贸易</li>
+<li>ChinaDataResidentIncomeExp –居民收支</li>
+<li>ChinaDataFAI –固定资产投资</li>
+<li>ChinaDataRealEstate –房地产开发</li>
+<li>ChinaDataForeignTrade –进出口</li>
+<li>ChinaDataFDI –外商直接投资</li>
+<li>ChinaDataMoneyStatistics –货币统计</li>
+<li>ChinaDataAllSystemFinancing –社会融资规模</li>
+<li>ChinaDataLendingDeposit –金融机构存贷款</li>
+<li>ChinaDataCreditFundsTable –金融机构信贷收支</li>
+<li>ChinaDataOpenMarketOperation –人行公开市场回购</li>
+<li>ChinaDataExchangeRate –汇率</li>
+<li>ChinaDataInterestRateLendingDeposit –存贷款利率</li>
+<li>ChinaDataInterestRateSHIBOR –Shibor</li>
+<li>ChinaDataInterestRateInterbankRepo –银行间同业拆借</li>
+<li>ChinaDataFinance –财政</li>
+<li>ChinaDataGoldClosePrice –黄金收盘价</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#包含中国居民消费价格指数(CPI)数据，如大类CPI同比、环比、36大中城市CPI。历史数据从1993年开始，按月更新。</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Macro</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ChinaDataCPI</span><span class="p">(</span><span class="n">indicID</span><span class="o">=</span><span class="s">'M030000003'</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s">'indicName,periodDate,dataValue,dataSource'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'periodDate'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>          indicName                 periodDate  dataValue dataSource
+0    月_居民消费价格指数(CPI)_同比  2015-08-31   2.000000      国家统计局
+1    月_居民消费价格指数(CPI)_同比  2015-07-31   1.600000      国家统计局
+2    月_居民消费价格指数(CPI)_同比  2015-06-30   1.400000      国家统计局
+3    月_居民消费价格指数(CPI)_同比  2015-05-31   1.230767      国家统计局
+4    月_居民消费价格指数(CPI)_同比  2015-04-30   1.509062      国家统计局
+5    月_居民消费价格指数(CPI)_同比  2015-03-31   1.375778      国家统计局
+6    月_居民消费价格指数(CPI)_同比  2015-02-28   1.431120      国家统计局
+7    月_居民消费价格指数(CPI)_同比  2015-01-31   0.763809      国家统计局
+8    月_居民消费价格指数(CPI)_同比  2014-12-31   1.505570      国家统计局
+9    月_居民消费价格指数(CPI)_同比  2014-11-30   1.440000      国家统计局
+10   月_居民消费价格指数(CPI)_同比  2014-10-31   1.600000      国家统计局
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+</div>
+<div class="section" id="id16">
+<h2>特色大数据<a class="headerlink" href="http://tushare.org/datayes.html#id16" title="Permalink to this headline">¶</a></h2>
+<p>可以根据股票获取股票相关联的公司的新闻和公告数据，以及新闻公告摘要分类数据等。
+还可以根据股票主题获取主题包含的股票和新闻。所有获取方法均在Subject()类里。</p>
+<ul class="simple">
+<li>SocialDataXQ–雪球社交统计</li>
+<li>SocialDataXQByTicker–雪球社交统计(单只证券)</li>
+<li>SocialDataXQByDate–雪球社交统计(单个日期)</li>
+<li>SocialDataGuba–获取证券的股吧社交热度</li>
+<li>SocialThemeDataGuba–获取主题的股吧社交热度</li>
+<li>NewsInfoByTime–获取一天某段时间内的新闻信息</li>
+<li>NewsInfo–新闻信息</li>
+<li>NewsContent–新闻信息(附全文及链接)</li>
+<li>NewsContentByTime–获取一天某段时间内的新闻信息(附全文及链接)</li>
+<li>CompanyByNews–获取新闻关联的公司(含新闻情感)</li>
+<li>NewsByCompany–获取公司关联的新闻(含新闻情感)</li>
+<li>NewsInfoByInsertTime–获取一天某段时间内入库的新闻信息</li>
+<li>NewsContentByInsertTime–获取一天某段时间内入库的新闻信息(附全文及链接)</li>
+<li>TickersByNews–获取新闻关联的证券(含新闻情感)</li>
+<li>NewsByTickers–获取证券关联的新闻(含新闻情感)</li>
+<li>NewsHeatIndex–新闻热度指数</li>
+<li>NewsSentimentIndex–新闻情感指数</li>
+<li>ReportByTicker–根据证券代码获取相应公告分类结果</li>
+<li>ReportByCategory–根据公告分类获取相应公告信息</li>
+<li>ReportContentByID–根据公告ID获取公告内容</li>
+<li>ReportContent–获取公告相关的内容</li>
+<li>ThemesContent–主题基本信息</li>
+<li>TickersByThemes–获取主题关联的证券</li>
+<li>ThemesTickersInsert–获取一段时间内主题新增的关联证券</li>
+<li>ThemesTickersDelete–获取一段时间内主题删除的关联证券</li>
+<li>ThemesByTickers–获取证券关联的主题</li>
+<li>ThemesPeriod–获取主题活跃周期</li>
+<li>ActiveThemes–获取某天的活跃主题</li>
+<li>ThemesSimilarity–获取相似主题</li>
+<li>ThemesHeat–主题热度</li>
+<li>SectorThemesByTickers–获取证券关联的主题(源自行业)</li>
+<li>WebThemesByTickers–获取证券关联的主题(源自网络)</li>
+<li>ActiveThemesInsert–获取一段时间内新增的活跃主题</li>
+<li>ActiveThemesDelete–获取一段时间内删除的活跃主题</li>
+<li>ThemesCluster–当天活跃主题聚类对应关系</li>
+<li>ThemesByNews–获取新闻关联的主题</li>
+<li>ThemesByNewsCompanyRel–获取新闻关联的主题(仅含公司相关新闻)</li>
+<li>ThemesInsertDB–获取一段时间内新入库的主题</li>
+<li>ThemesByNewsLF–获取新闻关联的主题(优化后)</li>
+<li>ThemesByNewsMF–获取新闻关联的主题(二次优化后)</li>
+<li>ThemesByNewsTime–根据发布时间获取新闻关联的主题</li>
+<li>ThemesByNewsTimeCompanyRel–根据发布时间获取新闻关联的主题(仅含公司相关新闻)</li>
+<li>ThemesByNewsTimeLF–根据发布时间获取新闻关联的主题(优化后)</li>
+<li>ThemesByNewsTimeMF–根据发布时间获取新闻关联的主题(二次优化后)</li>
+<li>ThemesByNews2–获取新闻关联的主题2.0</li>
+<li>ThemesByNewsTime2–根据发布时间获取新闻关联的主题2.0</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#包含所有主题基本信息。输入主题代码或名称、主题来源，可以获取主题相关信息，包括主题ID、主题名称、主题描述、主题来源、当天是否活跃、主题插入时间、主题更新时间等。(注：1、主题基期自2011/4/16始；2、数据按日更新主题活跃状态。)</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Subject</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ThemesContent</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s">'themeName,themeBaseDate,isActive,insertTime'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'insertTime'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>            themeName       themeBaseDate  isActive           insertTime
+5039            工程建设    2015-08-17         1  2015-09-16 09:00:15
+5044            超越平台    2015-08-17         0  2015-09-16 09:00:15
+5043           洛阳自贸区    2015-08-17         0  2015-09-16 09:00:15
+5042            台风环高    2015-08-17         1  2015-09-16 09:00:15
+5041              民生    2015-08-17         1  2015-09-16 09:00:15
+5040           上海旅游节    2015-08-17         1  2015-09-16 09:00:15
+5038          深圳国企改革    2015-08-17         0  2015-09-16 09:00:03
+5037          超跌国企改革    2015-08-17         0  2015-09-16 09:00:03
+5030            掘金受益    2015-08-11         1  2015-09-10 09:00:03
+5036           中阿博览会    2015-08-11         1  2015-09-10 09:00:03
+5035            福州新区    2015-08-11         1  2015-09-10 09:00:03
+</pre></div>
+</div>
+<p>其它内容信息请查看通联数据的文档。</p>
+<p>主题数据效果图：</p>
+<div class="figure">
+<img alt="" src="./TuShare -DataYes_files/6.png">
+</div>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="http://tushare.org/index.html">TuShare 0.4.3 documentation</a> »</li> 
+      </ul>
+	  <wb:follow-button uid="1304687120" type="red_1" width="67" height="24" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:260px"><span style="background:url(http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/library/base/loading1.gif) no-repeat;height:18px;padding:0 0 2px 20px;">Loading...</span></wb:follow-button>
+      <a target="_blank" href="https://github.com/waditu/tushare">
+      	<img alt="Fork me on GitHub" src="./TuShare -DataYes_files/fork.png" style="position:absolute;top:0;right:0;border:0;z-index:1000;width:149px" id="fork-image">
+      </a>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Jimmy Liu.
+	waditu.<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256440418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256440418%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1256440418"></span><script src="http://s11.cnzz.com/z_stat.php?id=1256440418&amp;show=pic" type="text/javascript"></script>
+    </div>
+  
+</body><div></div></html>
