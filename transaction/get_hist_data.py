@@ -2,6 +2,9 @@ import tushare as ts
 df = ts.get_hist_data('600848', start='2017-01-05', end='2017-01-09')
 print df
 
+ds = df.sort_index();
+print ds
+
 
 
 
