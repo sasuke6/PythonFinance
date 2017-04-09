@@ -1,0 +1,61 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+date	transaction/get_stock_basics.py	/^date = df.ix['600848']['timeToMarket']$/;"	kind:variable	line:3
+dd	transaction/mixData.py	/^dd =  ds.head(10)$/;"	kind:variable	line:10
+df	transaction/get_hist_data.py	/^df = ts.get_hist_data('600848', start='2017-01-05', end='2017-01-09')$/;"	kind:variable	line:2
+df	transaction/get_index.py	/^df = ts.get_index()$/;"	kind:variable	line:2
+df	transaction/get_k_data.py	/^df = ts.get_k_data('600848', start='2017-01-05', end='2017-01-09')$/;"	kind:variable	line:2
+df	transaction/get_k_data_index.py	/^df = ts.get_k_data('399300', index=True,start='2016-10-01', end='2016-10-31');$/;"	kind:variable	line:2
+df	transaction/get_k_data_ktype.py	/^df = ts.get_k_data('600000', ktype='W', autype='hfq')$/;"	kind:variable	line:2
+df	transaction/get_realtime_quotes.py	/^df = ts.get_realtime_quotes('600036') #Single stock symbol$/;"	kind:variable	line:3
+df	transaction/get_sina_dd.py	/^df = ts.get_sina_dd('600036', date='2017-01-20') $/;"	kind:variable	line:3
+df	transaction/get_stock_basics.py	/^df = ts.get_stock_basics()$/;"	kind:variable	line:2
+df	transaction/get_tick_data.py	/^df = ts.get_tick_data('600036', date='2017-01-20')$/;"	kind:variable	line:3
+df	transaction/get_today_all.py	/^df = ts.get_today_all()$/;"	kind:variable	line:2
+df	transaction/mixData.py	/^df = ts.get_today_ticks('600036')$/;"	kind:variable	line:8
+df	transaction/plotData.py	/^df = ts.get_hist_data('600036', start='2017-01-05', end='2017-01-24')$/;"	kind:variable	line:8
+df	transaction/to_csv.py	/^df = ts.get_hist_data('600036')$/;"	kind:variable	line:3
+ds	transaction/get_hist_data.py	/^ds = df.sort_index();$/;"	kind:variable	line:5
+ds	transaction/mixData.py	/^ds = df.sort_index()$/;"	kind:variable	line:9
+ds	transaction/plotData.py	/^ds = df.sort_index()$/;"	kind:variable	line:9
+fig	transaction/mixData.py	/^fig = matplotlib.pyplot.gcf()$/;"	kind:variable	line:5
+fig	transaction/plotData.py	/^fig = matplotlib.pyplot.gcf()$/;"	kind:variable	line:5
+get_hist_data.py	transaction/get_hist_data.py	1;"	kind:file	line:1
+get_index.py	transaction/get_index.py	1;"	kind:file	line:1
+get_k_data.py	transaction/get_k_data.py	1;"	kind:file	line:1
+get_k_data_index.py	transaction/get_k_data_index.py	1;"	kind:file	line:1
+get_k_data_ktype.py	transaction/get_k_data_ktype.py	1;"	kind:file	line:1
+get_realtime_quotes.py	transaction/get_realtime_quotes.py	1;"	kind:file	line:1
+get_sina_dd.py	transaction/get_sina_dd.py	1;"	kind:file	line:1
+get_stock_basics.py	transaction/get_stock_basics.py	1;"	kind:file	line:1
+get_tick_data.py	transaction/get_tick_data.py	1;"	kind:file	line:1
+get_today_all.py	transaction/get_today_all.py	1;"	kind:file	line:1
+matplotlib	transaction/mixData.py	/^import matplotlib.pyplot$/;"	kind:namespace	line:3
+matplotlib	transaction/plotData.py	/^import matplotlib.pyplot$/;"	kind:namespace	line:3
+mixData.py	transaction/mixData.py	1;"	kind:file	line:1
+pd	transaction/mixData.py	/^import pandas as pd $/;"	kind:namespace	line:2
+pd	transaction/plotData.py	/^import pandas as pd $/;"	kind:namespace	line:2
+plotData.py	transaction/plotData.py	1;"	kind:file	line:1
+pyplot	transaction/mixData.py	/^import matplotlib.pyplot$/;"	kind:namespace	line:3
+pyplot	transaction/plotData.py	/^import matplotlib.pyplot$/;"	kind:namespace	line:3
+tmp	transaction/get_tick_data.py	/^tmp = df.head(10)$/;"	kind:variable	line:4
+to_csv.py	transaction/to_csv.py	1;"	kind:file	line:1
+ts	transaction/get_hist_data.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_index.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_k_data.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_k_data_index.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_k_data_ktype.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_realtime_quotes.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_sina_dd.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_stock_basics.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_tick_data.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/get_today_all.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/mixData.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/plotData.py	/^import tushare as ts$/;"	kind:namespace	line:1
+ts	transaction/to_csv.py	/^import tushare as ts$/;"	kind:namespace	line:1
+tushare	beginning/version.py	/^import tushare$/;"	kind:namespace	line:1
+version.py	beginning/version.py	1;"	kind:file	line:1
